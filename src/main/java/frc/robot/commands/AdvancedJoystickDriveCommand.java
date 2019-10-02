@@ -1,12 +1,11 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.OI;
 import frc.robot.Robot;
+import org.banting7200.utils.Numbers;
 
-public class JoystickDriveCommand extends Command {
-  public JoystickDriveCommand() {
+public class AdvancedJoystickDriveCommand extends Command {
+  public AdvancedJoystickDriveCommand() {
     requires(Robot.m_drivetrainsubsystem);
   }
 
@@ -17,7 +16,7 @@ public class JoystickDriveCommand extends Command {
   @Override
   protected void execute() {
     double speed = Robot.m_oi.joystick_1.getRawAxis(3);
-    speed = range(-1.0, 1.0, 1, 0, speed);
+    speed = Numbers.range(-1.0, 1.0, 1, 0, speed);
     Robot.m_drivetrainsubsystem.drive(Robot.m_oi.joystick_1, speed, true); // third argument = reverse (true = forward)
   }
 
@@ -33,10 +32,5 @@ public class JoystickDriveCommand extends Command {
 
   @Override
   protected void interrupted() {
-  }
-
-  double range(double min, double max, double newmin, double newmax, double number) {
-    /* This function just maps one integer to another */
-    return (number-min)/(max-min) * (newmax-newmin) + newmin;
   }
 }
