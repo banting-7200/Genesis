@@ -1,4 +1,4 @@
-package org.banting7200;
+package org.banting7200.utils;
 
 public class Numbers {
     public static double range(double min, double max, double newmin, double newmax, double number) {
