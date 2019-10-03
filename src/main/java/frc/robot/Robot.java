@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.JoystickDriveCommand;
+import frc.robot.commands.AdvancedJoystickDriveCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 //hey
@@ -13,7 +13,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem();
   public static OI m_oi;
 
-  Command driveCommand = new JoystickDriveCommand();
+  Command driveCommand = new AdvancedJoystickDriveCommand();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -21,7 +21,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new JoystickDriveCommand());
+    m_chooser.setDefaultOption("Default Auto", new AdvancedJoystickDriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

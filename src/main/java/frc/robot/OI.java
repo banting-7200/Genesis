@@ -1,7 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.controllers.LogitechJoystick;
 
 public class OI {
-  public Joystick joystick_1 = new Joystick(0);
+  public LogitechJoystick logitechJoystick = new LogitechJoystick();
 }
