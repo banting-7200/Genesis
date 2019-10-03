@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.utils.Config;
 
-public class AdvancedJoystickDriveCommand extends Command {
-  public AdvancedJoystickDriveCommand() {
+public class DriveCommand extends Command {
+  public DriveCommand() {
     requires(Robot.m_drivetrainsubsystem);
   }
 
@@ -15,7 +15,7 @@ public class AdvancedJoystickDriveCommand extends Command {
 
   @Override
   protected void execute() {
-    double speed = (Robot.m_oi.joystick_1.getRawAxis(3) * Config.baseSpeed) + 1;
+    double speed = (Config.getRawAxis(3) * Config.baseSpeed) + 1;
     Robot.m_drivetrainsubsystem.drive(Robot.m_oi.joystick_1, speed, true); // third argument = reverse (true = forward)
   }
 
