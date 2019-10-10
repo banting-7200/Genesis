@@ -26,8 +26,11 @@ public class DriveTrainSubsystem extends Subsystem {
   }
 
   public void drive(Controller joystick, double speed) {
-    System.out.printf("%f, %f, %f", joystick.getX(), joystick.getY(), joystick.getZ());
-    drive_train.arcadeDrive(joystick.getY() * speed, joystick.getX() * speed);
+    drive_train.arcadeDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
+  }
+
+  public void drive(double movementSpeed, double turnSpeed, double speed) {
+    drive_train.arcadeDrive(movementSpeed * speed, turnSpeed * speed);
   }
 
   /*public void drive(Controller joystick, double speed, boolean reverse) {

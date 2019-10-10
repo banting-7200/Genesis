@@ -5,9 +5,11 @@ import frc.robot.utils.Config;
 public abstract class Controller {
 
     public int port;
+    public double speed;
 
     public Controller() {
         setPort((int) Config.get("defaults.controller_port"));
+        this.speed = (double) Config.get("defaults.controller_base_speed");
     }
 
     public void setPort(int port) {
