@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.controllers.Controller;
 
 public class DriveTrainSubsystem extends Subsystem {
   /* Motors */
@@ -24,12 +25,13 @@ public class DriveTrainSubsystem extends Subsystem {
   public void initDefaultCommand() {
   }
 
-  public void drive(Joystick joystick, double speed) {
+  public void drive(Controller joystick, double speed) {
+    System.out.printf("%f, %f, %f", joystick.getX(), joystick.getY(), joystick.getZ());
     drive_train.arcadeDrive(joystick.getY() * speed, joystick.getX() * speed);
   }
 
-  public void drive(Joystick joystick, double speed, boolean reverse) {
+  /*public void drive(Controller joystick, double speed, boolean reverse) {
     int direction = reverse ? 1 : -1;
     drive_train.arcadeDrive(joystick.getY() * speed * direction, joystick.getX() * speed * direction * -1);
-  }
+  }*/
 }

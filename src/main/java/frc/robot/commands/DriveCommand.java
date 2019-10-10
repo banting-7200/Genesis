@@ -2,7 +2,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.controllers.LogitechJoystick;
 import frc.robot.utils.Config;
+import frc.robot.controllers.Controller;
 
 public class DriveCommand extends Command {
   public DriveCommand() {
@@ -15,8 +17,7 @@ public class DriveCommand extends Command {
 
   @Override
   protected void execute() {
-    double speed = (Config.getRawAxis(3) * Config.baseSpeed) + 1;
-    Robot.m_drivetrainsubsystem.drive(Robot.m_oi.joystick_1, speed, true); // third argument = reverse (true = forward)
+    Robot.m_drivetrainsubsystem.drive((Controller) Config.get("controls.main"), (double) Config.get("controls.base_speed"));
   }
 
   @Override
@@ -26,10 +27,11 @@ public class DriveCommand extends Command {
 
   @Override
   protected void end() {
-    Robot.m_drivetrainsubsystem.drive(Robot.m_oi.joystick_1, 0);
+    Robot.m_drivetrainsubsystem.drive((Controller) Config.get("controls.main"), 0);
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

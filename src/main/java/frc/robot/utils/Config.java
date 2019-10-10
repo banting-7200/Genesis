@@ -1,22 +1,33 @@
 package frc.robot.utils;
 
-import frc.robot.controllers.Controller;
-import frc.robot.controllers.LogitechGamepad;
+import java.util.HashMap;
+import java.util.Map;
+
 import frc.robot.controllers.LogitechJoystick;
+import frc.robot.controllers.Controller;
 
 public class Config {
 
     // Semantics
-    public static String name;
-    public static String description;
-    public static double baseSpeed;
-    public static Controller mainController;
+    public static Map<String, Object> configMap = new HashMap<>();
 
     static {
-        name = "Mr. Robot Man";
-        description = "The Banting 7200 robot.";
-        baseSpeed = 1.0;
-        mainController = new LogitechJoystick();
+        set("sem.name", "Mr. Robot Man :)");
+        set("sem.description", "The most epicest robot in this site of the galaxy");
+        set("controls.base_speed", 1.0);
+        set("defaults.controller_port", 0);
+
+        Controller mainController = new LogitechJoystick();
+        mainController.setPort(0);
+        set("controls.main", mainController);
+
     }
 
+    public static Object get(String name) {
+        return configMap.get(name);
+    }
+
+    public static void set(String name, Object obj) {
+        configMap.put(name, obj);
+    }
 }
