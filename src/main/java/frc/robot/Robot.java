@@ -6,12 +6,15 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
+import frc.robot.controllers.Controller;
+import frc.robot.controllers.PingController;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
-//hey
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem();
   public static OI m_oi;
+
+  public PingController pingController;
 
   Command driveCommand = new DriveCommand();
 
@@ -45,11 +48,15 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
     }
+
+    this.pingController = new PingController(6, 5); // implement logic in PingController getX(), getY(), getZ();
   }
 
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    
+    Robot.m_drivetrainsubsystem.drive(this.pingController.getY(), this.pingController.getX(), 1);
   }
 
   @Override
