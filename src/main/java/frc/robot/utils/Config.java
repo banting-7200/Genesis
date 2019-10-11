@@ -5,7 +5,6 @@ import java.util.Map;
 
 import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.Controller;
-import frc.robot.controllers.LogitechGamepad;
 
 public class Config {
 
@@ -19,7 +18,7 @@ public class Config {
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
 
-        Controller mainController = new LogitechGamepad();
+        Controller mainController = new LogitechJoystick();
         mainController.setPort(0);
         set("controls.main", mainController);
 

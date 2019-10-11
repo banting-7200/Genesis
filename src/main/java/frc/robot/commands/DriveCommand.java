@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.controllers.LogitechJoystick;
 import frc.robot.utils.Config;
 import frc.robot.controllers.Controller;
 

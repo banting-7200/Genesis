@@ -3,7 +3,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.Robot;
-import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class Ping {
     public static Ultrasonic ultra;
