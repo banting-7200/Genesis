@@ -46,4 +46,8 @@ public class PingController extends Controller {
         return this.pingSensor.pingSensor;
     }
 
+    public boolean getButton(int button) {
+        return false;
+    }
+
 }

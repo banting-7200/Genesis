@@ -20,4 +20,6 @@ public abstract class Controller {
     public abstract double getY(); // This is used for the directional speed (i.e, forwards & backwards)
     public abstract double getZ(); 
 
+    public abstract boolean getButton(int button);
+
 }

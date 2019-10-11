@@ -21,4 +21,8 @@ public class LogitechGamepad extends Controller {
     public double getZ() {
         return joystick.getZ();
     }
+
+    public boolean getButton(int button) {
+        return this.joystick.getRawButton(button);
+    }
 }
