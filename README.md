@@ -2,6 +2,11 @@
 
 A command-based robot.
 
+## Vendor Libs
+
+Vendor libraries to install alongside WPILib
+- Waiting on mat to send me da links
+
 ## Contribution
 
 Things to remember:
