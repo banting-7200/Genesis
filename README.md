@@ -15,3 +15,5 @@ Things to remember:
 - Store variables in the `Config` class
 - Try to keep systems and commands seperated
 - Follow the code style
+
+Check out (our Trello)[https://trello.com/b/8QvxfFTF/banting-robotics] if you want a place to start.
