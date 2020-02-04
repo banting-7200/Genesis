@@ -1,17 +1,18 @@
-package frc.robot.utils;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class PingSensor {
+public class PingSensorSubsystem extends Subsystem {
 
     public Ultrasonic pingSensor;
 
     public boolean printDistance;
 
-    public PingSensor(int trigPin, int echoPin) {
-        this.pingSensor = new Ultrasonic(trigPin, echoPin);
+    public PingSensorSubsystem (int trig, int echo) {
+        this.pingSensor = new Ultrasonic(trig, echo);
         this.pingSensor.setAutomaticMode(true);
-        this.printDistance = true;
+        this.printDistance = false;
     }
 
     public double getDistance() {
@@ -23,4 +24,10 @@ public class PingSensor {
 
         return dist;
     }
+
+    @Override
+    protected void initDefaultCommand() {
+
+    }
+    
 }

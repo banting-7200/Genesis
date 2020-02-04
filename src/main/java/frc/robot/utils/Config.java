@@ -18,7 +18,10 @@ public class Config {
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
         set("motors.left_motors", new int[]{0, 1});
-        set("motors.right_motors", new int[]{1, 2});
+        set("motors.right_motors", new int[]{2, 3});
+
+        set("ping.trig", 1);
+        set("ping.echo", 2);
 
         Controller mainController = new LogitechJoystick();
         mainController.setPort(0);

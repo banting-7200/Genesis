@@ -2,23 +2,17 @@ package frc.robot.controllers;
 
 import edu.wpi.first.hal.util.UncleanStatusException;
 import edu.wpi.first.wpilibj.Ultrasonic;
-import frc.robot.utils.PingSensor;
+import frc.robot.subsystems.PingSensorSubsystem;
 
 public class PingController extends Controller {
 
     int trigPin;
     int echoPin;
 
-    PingSensor pingSensor;
+    PingSensorSubsystem subsystem;
 
-    public PingController(int trigPin, int echoPin) {
-        this.trigPin = trigPin;
-        this.echoPin = echoPin;
-        try {
-            pingSensor = new PingSensor(trigPin, echoPin);
-        } catch (UncleanStatusException e) {
-            System.out.println("Error initializing pingsensor.");
-        }
+    public PingController(PingSensorSubsystem subsystem) {
+        this.subsystem = subsystem;
     }
 
     public double getX() {
@@ -26,7 +20,7 @@ public class PingController extends Controller {
     }
 
     public double getY() {
-        double centimetres = this.pingSensor.getDistance() / 100.0;
+        double centimetres = this.subsystem.getDistance() / 100.0;
         if (centimetres <= 10) {
             return -0.5;
         } else if (centimetres >= 10 && centimetres <= 30) {
@@ -43,7 +37,7 @@ public class PingController extends Controller {
     }
 
     public Ultrasonic getUltrasonic() {
-        return this.pingSensor.pingSensor;
+        return this.subsystem.pingSensor;
     }
 
     public boolean getButton(int button) {
