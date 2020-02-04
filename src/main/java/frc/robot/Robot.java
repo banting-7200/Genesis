@@ -8,8 +8,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
-import frc.robot.controllers.PneumaticsController;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.utils.I2CCOM;
 import frc.robot.utils.Config;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -17,14 +17,15 @@ import edu.wpi.first.wpilibj.CameraServer;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C.Port;
 import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.util.Color;
 
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem();
+  public static PneumaticsSubsystem m_pneumaticsubsystem = new PneumaticsSubsystem();
   public static OI m_oi;
 
   public PingController pingController;
-  public static PneumaticsController pneumatics;
 
 
   Command driveCommand = new DriveCommand();
@@ -46,7 +47,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto mode", m_chooser);
     arduinoI2C = new I2CCOM(1);
     rPiI2C = new I2CCOM(2);
-    pneumatics = new PneumaticsController(4,5);
 
     
     
