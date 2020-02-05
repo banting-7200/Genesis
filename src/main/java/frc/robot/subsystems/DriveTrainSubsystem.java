@@ -2,13 +2,11 @@ package frc.robot.subsystems;
 
 import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.controllers.Controller;
-import frc.robot.utils.Config;
 import java.util.Arrays;
 
 public abstract class DriveTrainSubsystem extends Subsystem {

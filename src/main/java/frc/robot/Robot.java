@@ -1,10 +1,15 @@
 package frc.robot;
 
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.DriveCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
@@ -12,15 +17,8 @@ import frc.robot.subsystems.CSMDriveTrain;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.PingSensorSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
-import frc.robot.utils.I2CCOM;
 import frc.robot.utils.Config;
-
-import com.revrobotics.ColorSensorV3;
-import edu.wpi.first.wpilibj.I2C.Port;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.util.Color;
+import frc.robot.utils.I2CCOM;
 
 public class Robot extends TimedRobot {
   //  public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem(); // Spark motor
@@ -46,7 +44,6 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotInit() {
-    m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     arduinoI2C = new I2CCOM(1);

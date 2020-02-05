@@ -6,10 +6,10 @@ import frc.robot.utils.Config;
 
 import com.revrobotics.CANSparkMax;
 
-public class NeoDriveTrainSubsystem extends DriveTrainSubsystem {
+public class CSMDriveTrain extends DriveTrainSubsystem {
     /* Motors */
 
-    public NeoDriveTrainSubsystem() {
+    public CSMDriveTrain() {
         super(Config.getIntArray("left_motors"), Config.getIntArray("right_motors"));
     }
 
