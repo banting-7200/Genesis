@@ -25,7 +25,7 @@ public class Robot extends TimedRobot {
   //  public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem(); // Spark motor
   public static NeoDriveTrainSubsystem m_drivetrainsubsystem = new NeoDriveTrainSubsystem(); // CAN Spark MAX motor
   public static PneumaticsSubsystem m_pneumaticsubsystem = new PneumaticsSubsystem();
-  public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem((int) Config.get("ping.trig"), (int)  Config.get("ping.echo"));
+  public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem(Config.getInt("ping.trig"), Config.getInt("ping.echo"));
   public static OI m_oi;
 
   public PingController pingController;
