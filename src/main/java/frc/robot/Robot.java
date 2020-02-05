@@ -21,13 +21,14 @@ import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
 public class Robot extends TimedRobot {
-  //  public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem(); // Spark motor
+  // public static DriveTrainSubsystem m_drivetrainsubsystem = new
+  // DriveTrainSubsystem(); // Spark motor
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static PneumaticsSubsystem m_pneumaticsubsystem = new PneumaticsSubsystem();
-  public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem(Config.getInt("ping.trig"), Config.getInt("ping.echo"));
+  public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem(Config.getInt("ping.trig"),
+      Config.getInt("ping.echo"));
 
   public PingController pingController;
-
 
   Command driveCommand = new DriveCommand();
   Command m_autonomousCommand;
@@ -37,10 +38,10 @@ public class Robot extends TimedRobot {
   I2CCOM ColorSensor;
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
-  
+
   public static I2C.Port i2cPort = I2C.Port.kOnboard;
-  public static ColorSensorV3 m_colorSensor = new ColorSensorV3 (i2cPort);
-  
+  public static ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+
   @Override
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
@@ -48,14 +49,9 @@ public class Robot extends TimedRobot {
     arduinoI2C = new I2CCOM(1);
     rPiI2C = new I2CCOM(2);
 
-    
-    
-    
   }
 
-  
-
-@Override
+  @Override
   public void robotPeriodic() {
   }
 
@@ -76,13 +72,14 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.start();
     }
 
-    this.pingController = new PingController(m_pingsensorsubsystem); // implement logic in PingController getX(), getY(), getZ();
+    this.pingController = new PingController(m_pingsensorsubsystem); // implement logic in PingController getX(),
+                                                                     // getY(), getZ();
   }
 
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    
+
     Robot.m_drivetrainsubsystem.drive(this.pingController.getY(), this.pingController.getX(), 1);
   }
 
@@ -99,26 +96,24 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     driveCommand.start();
     Controller controller = Config.getController("controls.main");
-    if (controller.getButton(1)){
+    if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
-    } if (controller.getButton(2)){
+    }
+    if (controller.getButton(2)) {
       arduinoI2C.sendData(1, 0);
 
-    Color detectedColor = m_colorSensor.getColor();
-    double IR = m_colorSensor.getIR();
-    SmartDashboard.putNumber("Red", detectedColor.red);
-    SmartDashboard.putNumber("Green", detectedColor.green);
-    SmartDashboard.putNumber("Blue", detectedColor.blue);
-    SmartDashboard.putNumber("IR", IR);
+      Color detectedColor = m_colorSensor.getColor();
+      double IR = m_colorSensor.getIR();
+      SmartDashboard.putNumber("Red", detectedColor.red);
+      SmartDashboard.putNumber("Green", detectedColor.green);
+      SmartDashboard.putNumber("Blue", detectedColor.blue);
+      SmartDashboard.putNumber("IR", IR);
 
-    int proximity = m_colorSensor.getProximity();
+      int proximity = m_colorSensor.getProximity();
 
-    SmartDashboard.putNumber("Proximity", proximity);
+      SmartDashboard.putNumber("Proximity", proximity);
     }
-    }
-
-    
-  
+  }
 
   @Override
   public void testPeriodic() {
