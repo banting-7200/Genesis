@@ -2,7 +2,6 @@ package frc.robot.subsystems;
 
 import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.Spark;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -18,11 +17,11 @@ public class NeoDriveTrainSubsystem extends Subsystem {
     /* Motors */
 
     public NeoDriveTrainSubsystem() {
-        for (int i : (int[]) Config.get("left_motors")) {
+        for (int i : Config.getIntArray("left_motors")) {
             left.add(new CANSparkMax(i, MotorType.kBrushless));
         }
 
-        for (int i : (int[]) Config.get("right_motors")) {
+        for (int i : Config.getIntArray("right_motors")) {
             right.add(new CANSparkMax(i, MotorType.kBrushless));
         }
     }

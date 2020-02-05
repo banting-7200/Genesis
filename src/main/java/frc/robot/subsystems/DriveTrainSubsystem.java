@@ -15,11 +15,11 @@ public class DriveTrainSubsystem extends Subsystem {
     /* Motors */
 
     public DriveTrainSubsystem() {
-        for (int i : (int[]) Config.get("left_motors")) {
+        for (int i : Config.getIntArray("left_motors")) {
             left.add(new Spark(i));
         }
 
-        for (int i : (int[]) Config.get("right_motors")) {
+        for (int i : Config.getIntArray("right_motors")) {
             right.add(new Spark(i));
         }
     }

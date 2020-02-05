@@ -49,6 +49,10 @@ public class Config {
         return (double) get(name);
     }
 
+    public static int[] getIntArray(String name) {
+        return (int[]) get(name);
+    }
+
     public static void set(String name, Object obj) {
         configMap.put(name, obj);
     }
