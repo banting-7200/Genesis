@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.util.Color;
 public class ColorSensorSubsystem extends Subsystem{
     
   public static I2C.Port i2cPort = I2C.Port.kOnboard;
-  public static ColorSensorV3 m_colorSensor = new ColorSensorV3 (i2cPort);
+  public static ColorSensorV3 colorSensor = new ColorSensorV3 (i2cPort);
 
   @Override
   protected void initDefaultCommand() {

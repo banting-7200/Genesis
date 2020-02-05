@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.CSMDriveTrain;
+import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
+  public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
 
   public PingController pingController;
 
