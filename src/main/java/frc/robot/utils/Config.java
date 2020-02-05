@@ -53,6 +53,10 @@ public class Config {
         return (int[]) get(name);
     }
 
+    public static Controller getController(String name) {
+        return (Controller) get(name);
+    }
+
     public static void set(String name, Object obj) {
         configMap.put(name, obj);
     }
