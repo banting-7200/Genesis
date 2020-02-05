@@ -24,7 +24,7 @@ public class PneumaticsSubsystem extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        // TODO Auto-generated method stub
+        // TODO Reset pneumatics position on robot startup
 
     }
 
