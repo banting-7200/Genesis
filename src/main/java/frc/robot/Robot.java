@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.DriveCommand;
 import frc.robot.controllers.Controller;
+import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.CSMDriveTrain;
 import frc.robot.subsystems.ColorSensorSubsystem;
@@ -22,6 +23,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static ColorSensorV3 m_colorsensor = m_colorsensorsubsystem.colorSensor;
+  //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
 
@@ -75,6 +77,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    System.out.println("INhael");
     Scheduler.getInstance().run();
     driveCommand.start();
 

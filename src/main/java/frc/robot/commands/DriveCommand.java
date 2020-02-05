@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.controllers.Controller;
 import frc.robot.utils.Config;
 
 public class DriveCommand extends Command {
@@ -15,7 +16,7 @@ public class DriveCommand extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"), Config.getDouble("controls.base_speed"));
+    Robot.m_drivetrainsubsystem.drive((Controller) Config.getController("controls.main"), Config.getDouble("controls.base_speed"));
   }
 
   @Override
@@ -25,7 +26,7 @@ public class DriveCommand extends Command {
 
   @Override
   protected void end() {
-    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"), 0);
+    Robot.m_drivetrainsubsystem.drive((Controller) Config.getController("controls.main"), 0);
   }
 
   @Override

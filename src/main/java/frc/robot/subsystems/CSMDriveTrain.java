@@ -10,7 +10,7 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     /* Motors */
 
     public CSMDriveTrain() {
-        super(Config.getIntArray("left_motors"), Config.getIntArray("right_motors"));
+        super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
     }
 
     @Override

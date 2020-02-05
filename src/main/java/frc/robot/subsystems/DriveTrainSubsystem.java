@@ -12,7 +12,13 @@ import java.util.Arrays;
 public abstract class DriveTrainSubsystem extends Subsystem {
     /* Motors */
 
+    public abstract SpeedController createSpeedController(int id);
+
     public DriveTrainSubsystem(int[] leftMotorIDs, int[] rightMotorIDs) {
+
+        left = new ArrayList<>();
+        right = new ArrayList<>();
+
         for (int i : leftMotorIDs) {
             left.add(createSpeedController(i));
         }
@@ -20,25 +26,30 @@ public abstract class DriveTrainSubsystem extends Subsystem {
         for (int i : rightMotorIDs) {
             right.add(createSpeedController(i));
         }
-    }
 
-    public abstract SpeedController createSpeedController(int id);
+        left_group = new SpeedControllerGroup(left.get(0), Arrays.copyOfRange(left.toArray(new SpeedController[]{}), 1, left.size()));
+
+        right_group = new SpeedControllerGroup(right.get(0), Arrays.copyOfRange(right.toArray(new SpeedController[]{}), 1, right.size()));
+
+        drive_train = new DifferentialDrive(left_group, right_group);
+    }
 
     public static ArrayList<SpeedController> left;
     public static ArrayList<SpeedController> right;
 
     /* Motor Controllers */
-    public static SpeedControllerGroup left_group = new SpeedControllerGroup(left.get(0), Arrays.copyOfRange(left.toArray(new SpeedControllerGroup[]{}), 1, left.size()));
-    public static SpeedControllerGroup right_group = new SpeedControllerGroup(right.get(0), Arrays.copyOfRange(right.toArray(new SpeedControllerGroup[]{}), 1, right.size()));
+    public static SpeedControllerGroup left_group;
+    public static SpeedControllerGroup right_group;
 
     /* Drive Train */
-    public static DifferentialDrive drive_train = new DifferentialDrive(left_group, right_group);
+    public static DifferentialDrive drive_train;
 
     @Override
     public void initDefaultCommand() {
     }
 
     public void drive(Controller joystick, double speed) {
+        System.out.println(joystick.getY());
         drive_train.arcadeDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
     }
 

@@ -16,4 +16,10 @@ Things to remember:
 - Try to keep systems and commands seperated
 - Follow the code style
 
+## CAN Devices
+
+01: Pneumatics Controller
+02: Power distribution board
+03: CAN Spark MAX
+
 Look in TODO.md for an updated list of things I'd like to get done before competition season starts.
