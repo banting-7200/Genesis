@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
-import frc.robot.subsystems.NeoDriveTrainSubsystem;
+import frc.robot.subsystems.CSMDriveTrain;
+import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.PingSensorSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.utils.I2CCOM;
@@ -23,7 +24,7 @@ import edu.wpi.first.wpilibj.util.Color;
 
 public class Robot extends TimedRobot {
   //  public static DriveTrainSubsystem m_drivetrainsubsystem = new DriveTrainSubsystem(); // Spark motor
-  public static NeoDriveTrainSubsystem m_drivetrainsubsystem = new NeoDriveTrainSubsystem(); // CAN Spark MAX motor
+  public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static PneumaticsSubsystem m_pneumaticsubsystem = new PneumaticsSubsystem();
   public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem(Config.getInt("ping.trig"), Config.getInt("ping.echo"));
   public static OI m_oi;

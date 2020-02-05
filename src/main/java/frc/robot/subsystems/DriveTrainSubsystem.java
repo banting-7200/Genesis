@@ -11,18 +11,20 @@ import frc.robot.controllers.Controller;
 import frc.robot.utils.Config;
 import java.util.Arrays;
 
-public class DriveTrainSubsystem extends Subsystem {
+public abstract class DriveTrainSubsystem extends Subsystem {
     /* Motors */
 
-    public DriveTrainSubsystem() {
-        for (int i : Config.getIntArray("left_motors")) {
-            left.add(new Spark(i));
+    public DriveTrainSubsystem(int[] leftMotorIDs, int[] rightMotorIDs) {
+        for (int i : leftMotorIDs) {
+            left.add(createSpeedController(i));
         }
 
-        for (int i : Config.getIntArray("right_motors")) {
-            right.add(new Spark(i));
+        for (int i : rightMotorIDs) {
+            right.add(createSpeedController(i));
         }
     }
+
+    public abstract SpeedController createSpeedController(int id);
 
     public static ArrayList<SpeedController> left;
     public static ArrayList<SpeedController> right;
