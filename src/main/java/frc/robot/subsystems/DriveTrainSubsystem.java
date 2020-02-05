@@ -48,12 +48,14 @@ public abstract class DriveTrainSubsystem extends Subsystem {
     public void initDefaultCommand() {
     }
 
-    public void drive(Controller joystick, double speed) {
+
+
+    public abstract void drive(Controller joystick, double speed); /* {
         System.out.println(joystick.getY());
         drive_train.arcadeDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
-    }
+    }*/
 
-    public void drive(double movementSpeed, double turnSpeed, double speed) {
+    public abstract void drive(double movementSpeed, double turnSpeed, double speed); /*{
         drive_train.arcadeDrive(movementSpeed * speed, turnSpeed * speed);
-    }
+    }*/
 }
