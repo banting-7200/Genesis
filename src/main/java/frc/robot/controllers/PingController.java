@@ -1,6 +1,5 @@
 package frc.robot.controllers;
 
-import edu.wpi.first.hal.util.UncleanStatusException;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import frc.robot.subsystems.PingSensorSubsystem;
 
