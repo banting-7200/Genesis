@@ -25,7 +25,6 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static PneumaticsSubsystem m_pneumaticsubsystem = new PneumaticsSubsystem();
   public static PingSensorSubsystem m_pingsensorsubsystem = new PingSensorSubsystem(Config.getInt("ping.trig"), Config.getInt("ping.echo"));
-  public static OI m_oi;
 
   public PingController pingController;
 
@@ -99,7 +98,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     driveCommand.start();
-    Controller controller = (Controller) Config.get("controls.main");
+    Controller controller = Config.getController("controls.main");
     if (controller.getButton(1)){
       arduinoI2C.sendData(1, 1);
     } if (controller.getButton(2)){
