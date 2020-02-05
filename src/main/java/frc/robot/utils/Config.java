@@ -29,8 +29,24 @@ public class Config {
 
     }
 
+    /**
+     * @deprecated
+     * Should use {@link Config#getDouble(String)}, {@link Config#getInt(String)}, or {@link Config#getString(String)}.
+     */
     public static Object get(String name) {
         return configMap.get(name);
+    }
+
+    public static int getInt(String name) {
+        return (int) get(name);
+    }
+
+    public static String getString(String name) {
+        return (String) get(name);
+    }
+
+    public static double getDouble(String name) {
+        return (double) get(name);
     }
 
     public static void set(String name, Object obj) {
