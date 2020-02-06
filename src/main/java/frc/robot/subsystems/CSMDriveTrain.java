@@ -11,7 +11,8 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     /* Motors */
 
     public CSMDriveTrain() {
-        super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
+        //super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
+        super(new int[]{3}, new int[]{4});
     }
 
     @Override
@@ -22,12 +23,14 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     @Override
     public void drive(Controller joystick, double speed) {
         System.out.println(joystick.getY());
-        drive_train.tankDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
+        //drive_train.tankDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
+        drive_train.tankDrive(joystick.getY(), joystick.getY());
+
     }
 
     @Override
     public void drive(double movementSpeed, double turnSpeed, double speed) {
-        drive_train.arcadeDrive(movementSpeed * speed, turnSpeed * speed);
+        drive_train.tankDrive(movementSpeed * speed, turnSpeed * speed);
     }
 
 }

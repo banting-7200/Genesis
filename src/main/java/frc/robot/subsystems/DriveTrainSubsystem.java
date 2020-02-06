@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.controllers.Controller;
 import java.util.Arrays;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 public abstract class DriveTrainSubsystem extends Subsystem {
     /* Motors */
 
@@ -31,7 +34,7 @@ public abstract class DriveTrainSubsystem extends Subsystem {
 
         right_group = new SpeedControllerGroup(right.get(0), Arrays.copyOfRange(right.toArray(new SpeedController[]{}), 1, right.size()));
 
-        drive_train = new DifferentialDrive(left_group, right_group);
+        drive_train = new DifferentialDrive(new CANSparkMax(3, MotorType.kBrushless), new CANSparkMax(4, MotorType.kBrushless));
     }
 
     public static ArrayList<SpeedController> left;
