@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
   I2CCOM arduinoI2C;
 
   public PingController pingController;
-  public CSMSubsystem Lift;
+  public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
 
   Command driveCommand = new DriveCommand();
   Command m_autonomousCommand;
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    this.Lift = new CSMSubsystem(7);
+    this.Lift = new CSMSubsystem(7); //create a CSM using CSMSubsystem
   }
 
   @Override
@@ -96,7 +96,7 @@ public class Robot extends TimedRobot {
 
     }
     if (controller.getButton(5)){
-      this.Lift.start(10);
+      this.Lift.start(10);//Starts CSM (CSMSubsystem)
     }
       Color detectedColor = m_colorsensor.getColor();
       double IR = m_colorsensor.getIR();
