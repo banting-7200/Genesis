@@ -13,19 +13,19 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  
 public class CSMSubsystem extends Subsystem {
     
-    private CANSparkMax Name;
+    public CANSparkMax NEWCSM;
     private CANEncoder m_encoder;
 
-    public void NEWCSM(int Name, int canadress) {
-        this.Name = new CANSparkMax(canadress, MotorType.kBrushless);// new brushless motor object for elevator
-		m_encoder = this.Name.getEncoder();// defining the encoder
-		this.Name.set(0);// initially sets the motor to stop
+    public CSMSubsystem(int canadress) {
+        this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);// new brushless motor object for elevator
+		m_encoder = this.NEWCSM.getEncoder();// defining the encoder
+		this.NEWCSM.set(0);// initially sets the motor to stop
     }
 
     public void start(int speed){
-        this.Name.set(speed);
+        this.NEWCSM.set(speed);
     }
-//new CANSparkMax(DeviceID, MotorType.kBrushless);
+
     @Override
     protected void initDefaultCommand() {
         // TODO Auto-generated method stub

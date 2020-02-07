@@ -1,6 +1,8 @@
 package frc.robot;
 
+import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorSensorV3;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -24,7 +26,6 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static ColorSensorV3 m_colorsensor = m_colorsensorsubsystem.colorSensor;
-  public static CSMSubsystem m_lift = new CSMSubsystem();
   //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
@@ -41,8 +42,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    //NEWCSP(lift,7);
-    
   }
 
   @Override
