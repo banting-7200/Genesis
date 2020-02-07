@@ -14,6 +14,7 @@ import frc.robot.controllers.Controller;
 import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.CSMDriveTrain;
+import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.utils.Config;
@@ -23,11 +24,13 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static ColorSensorV3 m_colorsensor = m_colorsensorsubsystem.colorSensor;
+  public static CSMSubsystem m_lift = new CSMSubsystem();
   //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
 
   public PingController pingController;
+  public CSMSubsystem csmController;
 
   Command driveCommand = new DriveCommand();
   Command m_autonomousCommand;
@@ -38,6 +41,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    //NEWCSP(lift,7);
+    
   }
 
   @Override
