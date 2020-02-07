@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
   I2CCOM arduinoI2C;
 
   public PingController pingController;
-  public CSMSubsystem csmController;
+  public CSMSubsystem Lift;
 
   Command driveCommand = new DriveCommand();
   Command m_autonomousCommand;
@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
+    this.Lift = new CSMSubsystem(7);
   }
 
   @Override
@@ -84,7 +85,7 @@ public class Robot extends TimedRobot {
     System.out.println("INhael");
     Scheduler.getInstance().run();
     driveCommand.start();
-
+    
     
     Controller controller = Config.getController("controls.main");
     if (controller.getButton(1)) {
@@ -93,6 +94,10 @@ public class Robot extends TimedRobot {
     if (controller.getButton(2)) {
       arduinoI2C.sendData(1, 0);
 
+    }
+    if (controller.getButton(5)){
+      this.Lift.start(10);
+    }
       Color detectedColor = m_colorsensor.getColor();
       double IR = m_colorsensor.getIR();
       SmartDashboard.putNumber("Red", detectedColor.red);
@@ -103,7 +108,7 @@ public class Robot extends TimedRobot {
       int proximity = m_colorsensor.getProximity();
 
       SmartDashboard.putNumber("Proximity", proximity);
-    } 
+    
   }
 
   @Override
