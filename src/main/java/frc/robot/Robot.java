@@ -25,13 +25,13 @@ import frc.robot.utils.I2CCOM;
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
-  public static ColorSensorV3 m_colorsensor = m_colorsensorsubsystem.colorSensor;
   //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
 
   public PingController pingController;
   public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
+  public ColorSensorSubsystem findColor;
 
   Command driveCommand = new DriveCommand();
   Command m_autonomousCommand;
@@ -47,6 +47,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+    m_colorMatcher.addColorMatch(kBlueTarget); // These lines create the objects that let us match the colours to what they should be
+    m_colorMatcher.addColorMatch(kGreenTarget);
+    m_colorMatcher.addColorMatch(kRedTarget);
+    m_colorMatcher.addColorMatch(kYellowTarget);
   }
 
   @Override
@@ -85,8 +89,6 @@ public class Robot extends TimedRobot {
     System.out.println("INhael");
     Scheduler.getInstance().run();
     driveCommand.start();
-    
-    
     Controller controller = Config.getController("controls.main");
     if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
@@ -97,17 +99,11 @@ public class Robot extends TimedRobot {
     }
     if (controller.getButton(5)){
       this.Lift.start(10);//Starts CSM (CSMSubsystem)
+    }else{
+      this.Lift.start(0);
     }
-      Color detectedColor = m_colorsensor.getColor();
-      double IR = m_colorsensor.getIR();
-      SmartDashboard.putNumber("Red", detectedColor.red);
-      SmartDashboard.putNumber("Green", detectedColor.green);
-      SmartDashboard.putNumber("Blue", detectedColor.blue);
-      SmartDashboard.putNumber("IR", IR);
 
-      int proximity = m_colorsensor.getProximity();
-
-      SmartDashboard.putNumber("Proximity", proximity);
+    
     
   }
 
