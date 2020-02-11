@@ -25,8 +25,7 @@ public class ColorSensorSubsystem extends Subsystem{
     m_colorMatcher.addColorMatch(kYellowTarget);
   }
 
-  @Override
-  public void initDefaultCommand() {
+  public ColorSensorSubsystem() {
     Color detectedColor = m_colorSensor.getColor(); // Gets the colour reading from the colour sensor
 
     String colorString; // Creates our string that we can use for the Smart Dashboard
@@ -43,6 +42,13 @@ public class ColorSensorSubsystem extends Subsystem{
     } else {
       colorString = "Unknown"; // If a colour doesn't match any of the above, the colour is unknown and we should disregard it.
     }
+
+  }
+
+
+  @Override
+  public void initDefaultCommand() {
+
 
   }
 }

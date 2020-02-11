@@ -1,5 +1,6 @@
 package frc.robot;
 
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -31,6 +32,7 @@ public class Robot extends TimedRobot {
 
   public PingController pingController;
   public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
+
   public ColorSensorSubsystem findColor;
 
   Command driveCommand = new DriveCommand();
@@ -47,10 +49,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    m_colorMatcher.addColorMatch(kBlueTarget); // These lines create the objects that let us match the colours to what they should be
-    m_colorMatcher.addColorMatch(kGreenTarget);
-    m_colorMatcher.addColorMatch(kRedTarget);
-    m_colorMatcher.addColorMatch(kYellowTarget);
+  //this.findColor.ColorSencorSubsystem();
+  //System.out.println(findColor);
   }
 
   @Override
@@ -90,6 +90,14 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     driveCommand.start();
     Controller controller = Config.getController("controls.main");
+    boolean theLift = controller.getButton(6);
+
+    if (theLift){
+      
+
+    }
+    
+
     if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
     }

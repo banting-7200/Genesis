@@ -12,18 +12,28 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.command.Subsystem;
  
 public class CSMSubsystem extends Subsystem {
-    
+
     public CANSparkMax NEWCSM;
     private CANEncoder m_encoder;
 
     public CSMSubsystem(int canadress) {
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);// new brushless motor object for elevator
-		m_encoder = this.NEWCSM.getEncoder();// defining the encoder
-		this.NEWCSM.set(0);// initially sets the motor to stop
+        this.NEWCSM.set(0);// initially sets the motor to stop
     }
+
 
     public void start(int speed){
         this.NEWCSM.set(speed);
+    }
+
+    public void encoder(int revolutions){
+        this.m_encoder = new CANEncoder(NEWCSM);
+        this.m_encoder.getPosition();
+        this.NEWCSM.set(0);// initially sets the motor to stop
+        if (m_encoder.getPosition() <= 0){
+            double liftspeed = (m_encoder.getPosition() + 200);
+        }
+
     }
 
     @Override
