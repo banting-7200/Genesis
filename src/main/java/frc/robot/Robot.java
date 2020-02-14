@@ -86,15 +86,21 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    System.out.println("INhael");
     Scheduler.getInstance().run();
     driveCommand.start();
     Controller controller = Config.getController("controls.main");
-    boolean theLift = controller.getButton(6);
+    boolean theLift = controller.getButton(5);
+    boolean theLift1 = controller.getButton(3);
 
     if (theLift){
-      
-
+      this.Lift.encoderup(7,250);
+    }else{
+      this.Lift.stop();
+    }
+    if (theLift1){
+      this.Lift.encoderdown(7);
+    }else{
+      this.Lift.stop();
     }
     
 

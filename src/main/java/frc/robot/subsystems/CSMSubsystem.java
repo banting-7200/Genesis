@@ -26,14 +26,41 @@ public class CSMSubsystem extends Subsystem {
         this.NEWCSM.set(speed);
     }
 
-    public void encoder(int revolutions){
-        this.m_encoder = new CANEncoder(NEWCSM);
-        this.m_encoder.getPosition();
-        this.NEWCSM.set(0);// initially sets the motor to stop
-        if (m_encoder.getPosition() <= 0){
-            double liftspeed = (m_encoder.getPosition() + 200);
-        }
+    public void stop(){
+        this.NEWCSM.set(0);
+    }
 
+    public void encoderup(int canadress, int rotation){
+        this.m_encoder = new CANEncoder(NEWCSM);
+        this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
+        System.out.println(m_encoder.getPosition());
+        double liftspeed = (m_encoder.getPosition() - rotation) / -20;// this sets the lift speed and slows the motor
+																			// down as it gets nearer to its stopping
+																			// point
+
+				if (liftspeed >= 1.0) {
+					liftspeed = 1.0;// the motor cannot run faster than 1.0, so if a faster run is requested, this
+									// will constrain the value
+				}
+				if (liftspeed <= -0.6) {
+					liftspeed = 0.6;
+				}
+
+				this.NEWCSM.set(liftspeed);// run the motor
+    }
+
+    public void encoderdown(int canadress){
+        this.m_encoder = new CANEncoder(NEWCSM);
+        this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
+        System.out.println(m_encoder.getPosition());
+        double liftspeed = (m_encoder.getPosition()) / -20;
+
+				if (liftspeed <= -0.6) {
+					liftspeed = -0.6;
+				}
+
+				this.NEWCSM.set(liftspeed);
+       
     }
 
     @Override
