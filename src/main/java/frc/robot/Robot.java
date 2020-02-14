@@ -18,7 +18,9 @@ import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.CSMDriveTrain;
 import frc.robot.subsystems.CSMSubsystem;
+import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
+import frc.robot.subsystems.MaxBotixSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
@@ -32,6 +34,7 @@ public class Robot extends TimedRobot {
 
   public PingController pingController;
   public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
+  public MaxBotixSubsystem distance;
 
   public ColorSensorSubsystem findColor;
 
@@ -91,7 +94,7 @@ public class Robot extends TimedRobot {
     Controller controller = Config.getController("controls.main");
     boolean theLift = controller.getButton(5);
     boolean theLift1 = controller.getButton(3);
-
+//****************lift CODE******************/
     if (theLift){
       this.Lift.encoderup(7,250);
     }else{
@@ -102,7 +105,10 @@ public class Robot extends TimedRobot {
     }else{
       this.Lift.stop();
     }
-    
+//**************lift CODE END****************/
+
+    this.distance.Ping();
+    System.out.println();
 
     if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
@@ -110,15 +116,7 @@ public class Robot extends TimedRobot {
     if (controller.getButton(2)) {
       arduinoI2C.sendData(1, 0);
 
-    }
-    if (controller.getButton(5)){
-      this.Lift.start(10);//Starts CSM (CSMSubsystem)
-    }else{
-      this.Lift.start(0);
-    }
-
-    
-    
+    }    
   }
 
   @Override
