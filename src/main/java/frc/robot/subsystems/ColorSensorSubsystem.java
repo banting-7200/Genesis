@@ -18,31 +18,12 @@ public class ColorSensorSubsystem extends Subsystem{
   public final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114); // This line establishes what should be a like-red colour
   public final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113); // This line establishes what should be a like-yellow colour
 
-  public void bot(){
-    m_colorMatcher.addColorMatch(kBlueTarget); // These lines create the objects that let us match the colours to what they should be
+
+  public ColorSensorSubsystem() {
+    m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
     m_colorMatcher.addColorMatch(kYellowTarget);
-  }
-
-  public ColorSensorSubsystem() {
-    Color detectedColor = m_colorSensor.getColor(); // Gets the colour reading from the colour sensor
-
-    String colorString; // Creates our string that we can use for the Smart Dashboard
-    ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor); // Matches what we got from the colour sensor to the closest colour we have listed
-
-    if (match.color == kBlueTarget) {
-      colorString = "Blue"; // If the colour we got is closer to the blue target, set the string to Blue.
-    } else if (match.color == kRedTarget) {
-      colorString = "Red"; // If the colour we got is closer to the red target, set the string to Red.
-    } else if (match.color == kGreenTarget) {
-      colorString = "Green"; // If the colour we got is closer to the green target, set the string to Green.
-    } else if (match.color == kYellowTarget) {
-      colorString = "Yellow"; // If the colour we got is closer to the yellow target, set the string to Yellow.
-    } else {
-      colorString = "Unknown"; // If a colour doesn't match any of the above, the colour is unknown and we should disregard it.
-    }
-
   }
 
 
