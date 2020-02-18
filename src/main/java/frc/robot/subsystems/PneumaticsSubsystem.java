@@ -7,25 +7,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class PneumaticsSubsystem extends Subsystem {
 
-    public HashMap<Integer, Solenoid> solenoids;
+    public Solenoid NEWSOLENOID;
 
-    public PneumaticsSubsystem() {
-        solenoids = new HashMap<>();
-
+    public PneumaticsSubsystem (int CANPCM, int PCMPORT){
+        this.NEWSOLENOID = new Solenoid(CANPCM, PCMPORT);
     }
 
-    public void createSolenoid(int id, int address) {
-        solenoids.put(id, new Solenoid(id, address));
-    }
-
-    public Solenoid get(int id) {
-        return solenoids.get(id);
+    public void ToggleSolenoid (Boolean state){
+        this.NEWSOLENOID.set(state);
     }
 
     @Override
     protected void initDefaultCommand() {
-        // TODO Reset pneumatics position on robot startup
+        // TODO Auto-generated method stub
 
     }
+
+    
 
 }

@@ -11,8 +11,8 @@ public class LimitSubsystem extends Subsystem{
         this.NEWINPUT = new DigitalInput(port);
     }
 
-    public void getlimit(){
-        this.NEWINPUT.get();
+    public boolean getlimit(){
+        return this.NEWINPUT.get();
     }
 
     @Override
