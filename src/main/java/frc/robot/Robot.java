@@ -18,9 +18,10 @@ import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.CSMDriveTrain;
 import frc.robot.subsystems.CSMSubsystem;
+import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.SparkSubsystem;
+import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
-import frc.robot.subsystems.MaxBotixSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
@@ -34,7 +35,9 @@ public class Robot extends TimedRobot {
 
   public PingController pingController;
   public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
-  public MaxBotixSubsystem distance;
+  public LimitSubsystem colorwheelspinner;
+  public PneumaticsSubsystem colorwheelpiston;
+  public PneumaticsSubsystem LiftlockPiston;
 
   public ColorSensorSubsystem findColor;
 
@@ -48,6 +51,10 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     this.Lift = new CSMSubsystem(7); //create a CSM using CSMSubsystem
+    this.colorwheelspinner = new LimitSubsystem(1);//limit switch for the color spinner
+    this.colorwheelpiston = new PneumaticsSubsystem(1, 1);//setting the can Adress of the PCM and the port on PCM
+    this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
+    
   }
 
   @Override
@@ -91,24 +98,47 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     driveCommand.start();
+    this.LiftlockPiston.ToggleSolenoid(false);
     Controller controller = Config.getController("controls.main");
     boolean theLift = controller.getButton(5);
     boolean theLift1 = controller.getButton(3);
+    boolean shootColorWheel = controller.getButton(6);
+    boolean retractColorWheel = controller.getButton(7);
 //****************lift CODE******************/
     if (theLift){
       this.Lift.encoderup(7,250);
+      this.LiftlockPiston.ToggleSolenoid(true);//turns the lift lock off
     }else{
       this.Lift.stop();
+      this.LiftlockPiston.ToggleSolenoid(false);//urns the lift lock on
     }
     if (theLift1){
       this.Lift.encoderdown(7);
+      this.LiftlockPiston.ToggleSolenoid(true);
+
     }else{
       this.Lift.stop();
+      this.LiftlockPiston.ToggleSolenoid(false);
     }
 //**************lift CODE END****************/
+//*****************Pneumatics*******************/
+    if(shootColorWheel){
+      this.colorwheelpiston.ToggleSolenoid(true);
+      //cut drive train speed half 
+    } 
+    if (retractColorWheel){
+      this.colorwheelpiston.ToggleSolenoid(false);
+      // resume drive train at normal speed
+    }
+//***************Pneumatics end*****************/
+//**************Limit Switch Code****************/
+    if (this.colorwheelspinner.getlimit()){
+      //driveCommand stop
+    }else{
+      driveCommand.start();
+    }
+//************Limit Switch Code END***************/
 
-    this.distance.Ping();
-    System.out.println();
 
     if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
