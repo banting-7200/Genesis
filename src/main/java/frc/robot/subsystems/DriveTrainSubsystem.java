@@ -17,6 +17,8 @@ public abstract class DriveTrainSubsystem extends Subsystem {
 
     public abstract SpeedController createSpeedController(int id);
 
+    private double speed;
+
     public DriveTrainSubsystem(int[] leftMotorIDs, int[] rightMotorIDs) {
 
         left = new ArrayList<>();
@@ -51,9 +53,15 @@ public abstract class DriveTrainSubsystem extends Subsystem {
     public void initDefaultCommand() {
     }
 
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
 
+    public double getSpeed() {
+        return speed;
+    }
 
-    public abstract void drive(Controller joystick, double speed); /* {
+    public abstract void drive(Controller joystick); /* {
         System.out.println(joystick.getY());
         drive_train.arcadeDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
     }*/

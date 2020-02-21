@@ -124,16 +124,16 @@ public class Robot extends TimedRobot {
 //*****************Pneumatics*******************/
     if(shootColorWheel){
       this.colorwheelpiston.ToggleSolenoid(true);
-      //cut drive train speed half 
+      m_drivetrainsubsystem.setSpeed(0.5);
     } 
     if (retractColorWheel){
       this.colorwheelpiston.ToggleSolenoid(false);
-      // resume drive train at normal speed
+      m_drivetrainsubsystem.setSpeed(1);
     }
 //***************Pneumatics end*****************/
 //**************Limit Switch Code****************/
     if (this.colorwheelspinner.getlimit()){
-      //driveCommand stop
+      driveCommand.cancel();
     }else{
       driveCommand.start();
     }

@@ -16,7 +16,7 @@ public class DriveCommand extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"), Config.getDouble("controls.base_speed"));
+    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"));
   }
 
   @Override
@@ -26,7 +26,8 @@ public class DriveCommand extends Command {
 
   @Override
   protected void end() {
-    Robot.m_drivetrainsubsystem.drive((Controller) Config.getController("controls.main"), 0);
+    Robot.m_drivetrainsubsystem.setSpeed(0);
+    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"));
   }
 
   @Override
