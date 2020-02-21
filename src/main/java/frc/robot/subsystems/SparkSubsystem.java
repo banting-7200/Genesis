@@ -1,23 +1,30 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.SpeedController;
+import frc.robot.controllers.Controller;
+import frc.robot.utils.Config;
 
-public class SparkSubsystem extends Subsystem {
+public class SparkSubsystem extends DriveTrainSubsystem {
 
-    public Spark NEWSPARK;
-
-    public SparkSubsystem(int PWMPin) {
-        this.NEWSPARK = new Spark(PWMPin);
-        this.NEWSPARK.set(0);
+    public SparkSubsystem() {
+        super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
     }
 
-    public void start(int speed) {
-        this.NEWSPARK.set(speed);
-    }
     @Override
-    protected void initDefaultCommand() {
-        // TODO Auto-generated method stub
+    public SpeedController createSpeedController(int id) {
+        return new Spark(id);
+    }
+
+    @Override
+    public void drive(Controller joystick) {
+        drive_train.tankDrive(joystick.getY(), joystick.getY());
+
+    }
+
+    @Override
+    public void drive(double movementSpeed, double turnSpeed, double speed) {
+        drive_train.tankDrive(movementSpeed * speed, turnSpeed * speed);
 
     }
 }

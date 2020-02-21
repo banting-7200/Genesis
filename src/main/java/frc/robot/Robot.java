@@ -27,7 +27,7 @@ import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
 public class Robot extends TimedRobot {
-  public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
+  public static DriveTrainSubsystem m_drivetrainsubsystem = new SparkSubsystem(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 

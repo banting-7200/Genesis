@@ -11,8 +11,8 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     /* Motors */
 
     public CSMDriveTrain() {
-        //super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
-        super(new int[]{3}, new int[]{4});
+        super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
+        //super(new int[]{3}, new int[]{4});
     }
 
     @Override
