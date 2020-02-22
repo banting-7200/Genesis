@@ -36,7 +36,7 @@ public abstract class DriveTrainSubsystem extends Subsystem {
 
         right_group = new SpeedControllerGroup(right.get(0), Arrays.copyOfRange(right.toArray(new SpeedController[]{}), 1, right.size()));
 
-        drive_train = new DifferentialDrive(new CANSparkMax(3, MotorType.kBrushless), new CANSparkMax(4, MotorType.kBrushless));
+        drive_train = new DifferentialDrive(left_group, right_group);
     }
 
     public static ArrayList<SpeedController> left;
@@ -61,12 +61,7 @@ public abstract class DriveTrainSubsystem extends Subsystem {
         return speed;
     }
 
-    public abstract void drive(Controller joystick); /* {
-        System.out.println(joystick.getY());
-        drive_train.arcadeDrive(joystick.getY() * speed * joystick.speed, joystick.getX() * speed * joystick.speed);
-    }*/
+    public abstract void drive(Controller joystick);
 
-    public abstract void drive(double movementSpeed, double turnSpeed, double speed); /*{
-        drive_train.arcadeDrive(movementSpeed * speed, turnSpeed * speed);
-    }*/
+    public abstract void drive(double movementSpeed, double turnSpeed, double speed);
 }
