@@ -14,10 +14,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.PneumaticsSubsystem;
+import frc.robot.subsystems.SparkDriveTrain;
 import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
@@ -28,7 +30,7 @@ import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
 public class Robot extends TimedRobot {
-  public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
+  public static DriveTrainSubsystem m_drivetrainsubsystem = new SparkDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
@@ -42,6 +44,7 @@ public class Robot extends TimedRobot {
   public ColorSensorSubsystem findColor;
 
   Command driveCommand = new DriveCommand();
+  Command liftCommand = new LiftCommand();
   Command m_autonomousCommand;
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -96,6 +99,8 @@ public class Robot extends TimedRobot {
   
     Scheduler.getInstance().run();
     driveCommand.start();
+    liftCommand.start();
+    
     Controller controller = Config.getController("controls.main");
     System.out.println(controller.getButton(5)+" (5)");
     System.out.println(controller.getButton(3)+" (3)");
@@ -121,13 +126,13 @@ public class Robot extends TimedRobot {
 //************Limit Switch Code END***************/
 
 
-    if (controller.getButton(1)) {
+    /*if (controller.getButton(1)) {
       arduinoI2C.sendData(1, 1);
     }
     if (controller.getButton(2)) {
       arduinoI2C.sendData(1, 0);
 
-    }
+    }*/
   }
 
   @Override

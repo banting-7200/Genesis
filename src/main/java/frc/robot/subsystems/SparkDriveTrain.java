@@ -1,0 +1,32 @@
+package frc.robot.subsystems;
+
+import frc.robot.subsystems.base.DriveTrainSubsystem;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.SpeedController;
+import frc.robot.controllers.Controller;
+import frc.robot.utils.Config;
+
+public class SparkDriveTrain extends DriveTrainSubsystem {
+    /* Motors */
+
+    public SparkDriveTrain() {
+        super(Config.getIntArray("motors.left_motors"), Config.getIntArray("motors.right_motors"));
+    }
+
+    @Override
+    public SpeedController createSpeedController(int id) {
+        return new Spark(id);
+    }
+
+    @Override
+    public void drive(Controller joystick) {
+        System.out.println(joystick.getY());
+        drive_train.arcadeDrive(joystick.getY() * 1, joystick.getX() * 1);
+    }
+
+    @Override
+    public void drive(double movementSpeed, double turnSpeed, double speed) {
+        drive_train.arcadeDrive(movementSpeed * speed, turnSpeed * speed);
+    }
+
+}

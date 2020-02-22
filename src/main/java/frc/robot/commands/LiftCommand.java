@@ -17,8 +17,9 @@ public class LiftCommand extends Command {
 
     
 
-    public void checkLift(){ // srotation -- Specified Rotation
-
+    @Override
+    protected void execute() {
+  
       Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);
 
       Controller controller = Config.getController("controls.main");
@@ -27,14 +28,14 @@ public class LiftCommand extends Command {
       boolean liftDown = controller.getButton(Config.getInt("controls.liftdown"));
       if (!Robot.limitSwitch.getLimit()) {
         if (liftUp){
-            Robot.m_liftsubsystem.Lift.encoderup(7, LiftSubsystem.SRotation);
+            Robot.m_liftsubsystem.Lift.encoderup(4, 1);
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(true);//turns the lift lock off
           }else{
             Robot.m_liftsubsystem.Lift.stop();
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);//urns the lift lock on
           }
           if (liftDown){
-            Robot.m_liftsubsystem.Lift.encoderdown(7);
+            Robot.m_liftsubsystem.Lift.encoderdown(4);
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(true);
       
           }else{
