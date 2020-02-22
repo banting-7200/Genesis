@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.controllers.Controller;
 import frc.robot.utils.Config;
+import frc.robot.subsystems.base.DriveTrainSubsystem;
 
 public class SparkSubsystem extends DriveTrainSubsystem {
 

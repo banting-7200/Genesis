@@ -24,17 +24,17 @@ public class LiftCommand extends Command {
 
       Controller controller = Config.getController("controls.main");
 
-      boolean theLift = controller.getButton(5);
-      boolean theLift1 = controller.getButton(3);
-
-        if (theLift){
+      boolean liftUp = controller.getButton(Config.getInt("controls.liftup"));
+      boolean liftDown = controller.getButton(Config.getInt("controls.liftdown"));
+      if (!Robot.limitSwitch.getLimit()) {
+        if (liftUp){
             Robot.m_liftsubsystem.Lift.encoderup(7, LiftSubsystem.SRotation);
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(true);//turns the lift lock off
           }else{
             Robot.m_liftsubsystem.Lift.stop();
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);//urns the lift lock on
           }
-          if (theLift1){
+          if (liftDown){
             Robot.m_liftsubsystem.Lift.encoderdown(7);
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(true);
       
@@ -42,11 +42,15 @@ public class LiftCommand extends Command {
             Robot.m_liftsubsystem.Lift.stop();
             Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);
           }
+      } else {
+        Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);
+      }
     }
 
     @Override
     protected boolean isFinished() {
-        // TODO Auto-generated method stub
-        return false;
+      Robot.m_liftsubsystem.Lift.stop();
+      Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);
+      return false;
     }
 }

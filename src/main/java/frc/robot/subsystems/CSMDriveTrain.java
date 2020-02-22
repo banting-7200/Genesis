@@ -4,6 +4,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.controllers.Controller;
 import frc.robot.utils.Config;
+import frc.robot.subsystems.base.DriveTrainSubsystem;
 
 import com.revrobotics.CANSparkMax;
 

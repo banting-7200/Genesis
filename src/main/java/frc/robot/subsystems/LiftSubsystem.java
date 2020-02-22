@@ -4,6 +4,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.utils.Config;
@@ -15,40 +16,13 @@ public class LiftSubsystem extends Subsystem {
     public static int SRotation;
 
     public LiftSubsystem() {
-        this.Lift = new CSMSubsystem(7);
+        this.Lift = new CSMSubsystem(4);
         this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
     }
 
     @Override
     protected void initDefaultCommand() {
-      // TODO Auto-generated method stub
+      setDefaultCommand(new LiftCommand());
 
     }
-
-
-
-    /*
-    boolean theLift = controller.getButton(5);
-    boolean theLift1 = controller.getButton(3);
-
-    this.LiftlockPiston.ToggleSolenoid(false);
-
-    public void checkLift(){ // srotation -- Specified Rotation
-        if (theLift){
-            this.Lift.encoderup(7, SRotation);
-            this.LiftlockPiston.ToggleSolenoid(true);//turns the lift lock off
-          }else{
-            this.Lift.stop();
-            this.LiftlockPiston.ToggleSolenoid(false);//urns the lift lock on
-          }
-          if (theLift1){
-            this.Lift.encoderdown(7);
-            this.LiftlockPiston.ToggleSolenoid(true);
-      
-          }else{
-            this.Lift.stop();
-            this.LiftlockPiston.ToggleSolenoid(false);
-          }
-    }
-    */
 }

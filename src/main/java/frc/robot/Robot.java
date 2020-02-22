@@ -23,7 +23,7 @@ import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
-import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.base.DriveTrainSubsystem;
 import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
@@ -31,15 +31,13 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new SparkSubsystem(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
+  public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
   //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
 
   public PingController pingController;
-  public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
-  public LimitSubsystem colorwheelspinner;
   public PneumaticsSubsystem colorwheelpiston;
-  public PneumaticsSubsystem LiftlockPiston;
 
   public ColorSensorSubsystem findColor;
 
@@ -52,10 +50,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    this.Lift = new CSMSubsystem(7); //create a CSM using CSMSubsystem
-    this.colorwheelspinner = new LimitSubsystem(1);//limit switch for the color spinner
     this.colorwheelpiston = new PneumaticsSubsystem(1, 1);//setting the can Adress of the PCM and the port on PCM
-    this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
     
   }
 
@@ -100,29 +95,9 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     driveCommand.start();
-    this.LiftlockPiston.ToggleSolenoid(false);
     Controller controller = Config.getController("controls.main");
-    boolean theLift = controller.getButton(5);
-    boolean theLift1 = controller.getButton(3);
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
-//****************lift CODE******************/
-    if (theLift){
-      this.Lift.encoderup(7,250);
-      this.LiftlockPiston.ToggleSolenoid(true);//turns the lift lock off
-    }else{
-      this.Lift.stop();
-      this.LiftlockPiston.ToggleSolenoid(false);//urns the lift lock on
-    }
-    if (theLift1){
-      this.Lift.encoderdown(7);
-      this.LiftlockPiston.ToggleSolenoid(true);
-
-    }else{
-      this.Lift.stop();
-      this.LiftlockPiston.ToggleSolenoid(false);
-    }
-//**************lift CODE END****************/
 //*****************Pneumatics*******************/
     if(shootColorWheel){
       this.colorwheelpiston.ToggleSolenoid(true);
@@ -134,7 +109,8 @@ public class Robot extends TimedRobot {
     }
 //***************Pneumatics end*****************/
 //**************Limit Switch Code****************/
-    if (this.colorwheelspinner.getlimit()){
+    if (limitSwitch.getLimit()){
+      System.out.println("Bruh switch bruh switch");
       driveCommand.cancel();
     }else{
       driveCommand.start();

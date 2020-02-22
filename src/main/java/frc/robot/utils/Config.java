@@ -17,8 +17,8 @@ public class Config {
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
-        set("motors.left_motors", new int[]{3, 4});
-        set("motors.right_motors", new int[]{5, 6});
+        set("motors.left_motors", new int[]{0, 1});
+        set("motors.right_motors", new int[]{2, 3});
         set("lift.system", new int[]{10});
 
         set("ping.trig", 1);
@@ -28,12 +28,11 @@ public class Config {
         mainController.setPort(getInt("defaults.controller_port"));
         set("controls.main", mainController);
 
-    }
+        set("controls.liftup", 5);
+        set("controls.liftdown", 3);
 
-    /**
-     * @deprecated
-     * Should use {@link Config#getDouble(String)}, {@link Config#getInt(String)}, or {@link Config#getString(String)}.
-     */
+    }
+    
     public static Object get(String name) {
         return configMap.get(name);
     }
