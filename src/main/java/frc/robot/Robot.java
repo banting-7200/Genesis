@@ -24,13 +24,14 @@ import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.subsystems.CSMDriveTrain;
+import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.base.DriveTrainSubsystem;
 import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
 public class Robot extends TimedRobot {
-  public static DriveTrainSubsystem m_drivetrainsubsystem = new SparkDriveTrain(); // CAN Spark MAX motor
+  public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
@@ -98,12 +99,24 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
   
     Scheduler.getInstance().run();
-    driveCommand.start();
-    liftCommand.start();
-    
+    //driveCommand.start();
+    //liftCommand.start();
     Controller controller = Config.getController("controls.main");
-    System.out.println(controller.getButton(5)+" (5)");
-    System.out.println(controller.getButton(3)+" (3)");
+    CSMSubsystem motor1 = new CSMSubsystem(3);
+    CSMSubsystem motor2 = new CSMSubsystem(3);
+    CSMSubsystem motor3 = new CSMSubsystem(3);
+    CSMSubsystem motor4 = new CSMSubsystem(3);
+    if (controller.getButton(9)) {
+      motor1.start(100);
+    } else if (controller.getButton(10)) {
+      motor2.start(100);
+    } else if (controller.getButton(11)) {
+      motor3.start(100);
+    } else if (controller.getButton(12)) {
+      motor4.start(100);
+    }
+    //System.out.println(controller.getButton(5)+" (5)");
+    //System.out.println(controller.getButton(3)+" (3)");
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/
@@ -117,7 +130,7 @@ public class Robot extends TimedRobot {
     }
 //***************Pneumatics end*****************/
 //**************Limit Switch Code****************/
-    if (limitSwitch.getLimit()){
+    if (!limitSwitch.getLimit()){
       System.out.println("Bruh switch bruh switch");
       driveCommand.cancel();
     }else{
