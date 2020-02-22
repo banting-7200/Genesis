@@ -12,7 +12,7 @@ public class Config {
     public static Map<String, Object> configMap = new HashMap<>();
 
     static {
-        set("sem.name", "Mr. Robot Man :)");
+        set("sem.name", "Wall-E 2");
         set("sem.description", "The most epicest robot in this site of the galaxy");
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
