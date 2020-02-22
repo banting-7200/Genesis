@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.controllers.Controller;
-import frc.robot.controllers.LogitechJoystick;
 
 import frc.robot.utils.Config;
 
@@ -13,7 +12,7 @@ import frc.robot.utils.Config;
 
 public class LiftCommand extends Command {
     public LiftCommand() {
-        requires(Robot.m_drivetrainsubsystem);
+        requires(Robot.m_liftsubsystem);
     }
 
     

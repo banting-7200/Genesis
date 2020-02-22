@@ -22,4 +22,6 @@ public abstract class Controller {
 
     public abstract boolean getButton(int button);
 
+    public abstract Object getController();
+
 }

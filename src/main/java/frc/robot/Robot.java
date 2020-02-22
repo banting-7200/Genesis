@@ -6,6 +6,7 @@ import com.revrobotics.ColorSensorV3;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -85,7 +86,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    CameraServer.getInstance().startAutomaticCapture();
+    //CameraServer.getInstance().startAutomaticCapture();
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
@@ -93,9 +94,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+  
     Scheduler.getInstance().run();
     driveCommand.start();
     Controller controller = Config.getController("controls.main");
+    System.out.println(controller.getButton(5)+" (5)");
+    System.out.println(controller.getButton(3)+" (3)");
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/
@@ -124,7 +128,7 @@ public class Robot extends TimedRobot {
     if (controller.getButton(2)) {
       arduinoI2C.sendData(1, 0);
 
-    }    
+    }
   }
 
   @Override
