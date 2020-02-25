@@ -103,20 +103,21 @@ public class Robot extends TimedRobot {
     //liftCommand.start();
     Controller controller = Config.getController("controls.main");
     CSMSubsystem motor1 = new CSMSubsystem(3);
-    CSMSubsystem motor2 = new CSMSubsystem(3);
-    CSMSubsystem motor3 = new CSMSubsystem(3);
-    CSMSubsystem motor4 = new CSMSubsystem(3);
+    CSMSubsystem motor2 = new CSMSubsystem(4);
+    CSMSubsystem motor3 = new CSMSubsystem(5);
+    CSMSubsystem motor4 = new CSMSubsystem(6);
     if (controller.getButton(9)) {
       motor1.start(100);
-    } else if (controller.getButton(10)) {
+    } 
+    if (controller.getButton(10)) {
       motor2.start(100);
-    } else if (controller.getButton(11)) {
+    } 
+    if (controller.getButton(11)) {
       motor3.start(100);
-    } else if (controller.getButton(12)) {
+    } 
+    if (controller.getButton(12)) {
       motor4.start(100);
     }
-    //System.out.println(controller.getButton(5)+" (5)");
-    //System.out.println(controller.getButton(3)+" (3)");
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/
