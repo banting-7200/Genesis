@@ -102,22 +102,22 @@ public class Robot extends TimedRobot {
     //driveCommand.start();
     //liftCommand.start();
     Controller controller = Config.getController("controls.main");
-    CSMSubsystem motor1 = new CSMSubsystem(7);
-    CSMSubsystem motor2 = new CSMSubsystem(4);
-    CSMSubsystem motor3 = new CSMSubsystem(5);
-    CSMSubsystem motor4 = new CSMSubsystem(6);
-    if (controller.getButton(9)) {
-      motor1.start(100);
-    } 
-    if (controller.getButton(10)) {
-      motor2.start(100);
-    } 
-    if (controller.getButton(11)) {
-      motor3.start(100);
-    } 
-    if (controller.getButton(12)) {
-      motor4.start(100);
-    }
+    //CSMSubsystem motor1 = new CSMSubsystem(7);
+    //CSMSubsystem motor2 = new CSMSubsystem(4);
+    //CSMSubsystem motor3 = new CSMSubsystem(5);
+    //CSMSubsystem motor4 = new CSMSubsystem(6);
+    //if (controller.getButton(9)) {
+    //  motor1.start(100);
+    //} 
+    //if (controller.getButton(10)) {
+    //  motor2.start(100);
+    //} 
+    //if (controller.getButton(11)) {
+    //  motor3.start(100);
+    //} 
+    //if (controller.getButton(12)) {
+    //  motor4.start(100);
+    //}
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/
@@ -131,12 +131,12 @@ public class Robot extends TimedRobot {
     }
 //***************Pneumatics end*****************/
 //**************Limit Switch Code****************/
-    if (!limitSwitch.getLimit()){
-      System.out.println("Bruh switch bruh switch");
-      driveCommand.cancel();
-    }else{
+    //if (!limitSwitch.getLimit()){
+    //  System.out.println("Bruh switch bruh switch");
+    //  driveCommand.cancel();
+    //}else{
       driveCommand.start();
-    }
+    //}
 //************Limit Switch Code END***************/
 
 

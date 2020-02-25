@@ -16,7 +16,13 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
 
     @Override
     public SpeedController createSpeedController(int id) {
-        return new CANSparkMax(id, MotorType.kBrushless);
+        CANSparkMax motor = new CANSparkMax(id, MotorType.kBrushless);
+        motor.restoreFactoryDefaults();
+        motor.setSmartCurrentLimit(60);
+        //motor.setInverted(true);
+        //motor.setOpenLoopRampRate(0.3);
+        return motor;
+
     }
 
     @Override
@@ -24,7 +30,7 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
 
         System.out.println(joystick.getX()+", "+joystick.getY());
 
-        drive_train.arcadeDrive(joystick.getX(), joystick.getY());        //drive_train.tankDrive(joystick.getY(), joystick.getY());
+        drive_train.tankDrive(joystick.getY(), joystick.getY());        //drive_train.tankDrive(joystick.getY(), joystick.getY());
 
     }
 
