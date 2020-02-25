@@ -30,7 +30,7 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
 
         System.out.println(joystick.getX()+", "+joystick.getY());
 
-        drive_train.tankDrive(joystick.getY(), joystick.getY());        //drive_train.tankDrive(joystick.getY(), joystick.getY());
+        drive_train.arcadeDrive(joystick.getY()*-1, joystick.getX());        //drive_train.tankDrive(joystick.getY(), joystick.getY());
 
     }
 
