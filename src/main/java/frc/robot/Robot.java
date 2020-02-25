@@ -102,7 +102,7 @@ public class Robot extends TimedRobot {
     //driveCommand.start();
     //liftCommand.start();
     Controller controller = Config.getController("controls.main");
-    CSMSubsystem motor1 = new CSMSubsystem(3);
+    CSMSubsystem motor1 = new CSMSubsystem(7);
     CSMSubsystem motor2 = new CSMSubsystem(4);
     CSMSubsystem motor3 = new CSMSubsystem(5);
     CSMSubsystem motor4 = new CSMSubsystem(6);
