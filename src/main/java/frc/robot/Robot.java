@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
@@ -23,7 +24,6 @@ public class Robot extends TimedRobot {
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
-  //public static LogitechJoystick m_joystick = Config.getController("controls.main");
 
   I2CCOM arduinoI2C;
 
@@ -34,7 +34,9 @@ public class Robot extends TimedRobot {
 
   Command driveCommand = new DriveCommand();
   Command liftCommand = new LiftCommand();
+  Command colorCommand = new ColorSensorCommand();
   Command m_autonomousCommand;
+   
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -135,6 +137,7 @@ public class Robot extends TimedRobot {
       arduinoI2C.sendData(1, 0);
 
     }*/
+    colorCommand.start();
   }
 
   @Override
