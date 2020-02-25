@@ -1,7 +1,5 @@
 package frc.robot.subsystems;
 
-import java.util.HashMap;
-
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 

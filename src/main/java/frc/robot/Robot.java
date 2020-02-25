@@ -1,30 +1,18 @@
 package frc.robot;
 
-import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.ColorSensorV3;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
-import frc.robot.controllers.LogitechJoystick;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.PneumaticsSubsystem;
-import frc.robot.subsystems.SparkDriveTrain;
-import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.subsystems.CSMDriveTrain;
-import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.base.DriveTrainSubsystem;
 import frc.robot.utils.Config;
