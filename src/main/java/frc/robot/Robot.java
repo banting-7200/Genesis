@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ColorSensorCommand;
 import frc.robot.commands.DriveCommand;
+import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
@@ -35,6 +36,7 @@ public class Robot extends TimedRobot {
   Command driveCommand = new DriveCommand();
   Command liftCommand = new LiftCommand();
   Command colorCommand = new ColorSensorCommand();
+  Command intakeCommand = new IntakeCommand();
   Command m_autonomousCommand;
    
 
@@ -92,6 +94,7 @@ public class Robot extends TimedRobot {
     driveCommand.start();
     //liftCommand.start();
     colorCommand.start();
+    intakeCommand.start();
     
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);

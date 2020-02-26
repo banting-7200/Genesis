@@ -39,9 +39,15 @@ public class Config {
         //*********ColorWheel***********//
         set("pcm.id", 1);
         set("pcm.port", 1);
-        set("controls.colorwheel.shoot", 8);
-        set("controls.colorwheel.retract", 4);
+        set("controls.colorwheel.shoot", 12);
+        set("controls.colorwheel.retract", 11);
         //*******ColorWheel End*********//
+
+        //**********Intake***********//
+        set("intake.spark.id", 3);
+        set("controls.intake.in", 6);
+        set("controls.intake.out", 4);
+        //*********Intake end*********//
 
     }
     
