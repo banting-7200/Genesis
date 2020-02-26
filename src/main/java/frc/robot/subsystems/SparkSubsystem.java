@@ -12,7 +12,7 @@ public class SparkSubsystem extends Subsystem {
         spark.set(0);
     }
 
-    public void start(int speed) {
+    public void start(double speed) {
         spark.set(speed);
     }
 
