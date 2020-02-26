@@ -87,12 +87,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-  
+    Controller controller = Config.getController("controls.main");
     Scheduler.getInstance().run();
     driveCommand.start();
     liftCommand.start();
-    Controller controller = Config.getController("controls.main");
-  
+    colorCommand.start();
+    
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/
@@ -121,7 +121,7 @@ public class Robot extends TimedRobot {
       arduinoI2C.sendData(1, 0);
 
     }*/
-    colorCommand.start();
+    
   }
 
   @Override

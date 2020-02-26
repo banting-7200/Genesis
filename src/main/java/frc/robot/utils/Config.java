@@ -14,7 +14,7 @@ public class Config {
     static {
         set("sem.name", "Wall-E 2");
         set("sem.description", "The most epicest robot in this site of the galaxy");
-        
+
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
@@ -35,6 +35,13 @@ public class Config {
         set("lift.id",4);
         set("number.of.rotations",200);
         //**********lift end************//
+
+        //*********ColorWheel***********//
+        set("pcm.id", 1);
+        set("pcm.port", 1);
+        set("controls.colorwheel.shoot", 8);
+        set("controls.colorwheel.retract", 4);
+        //*******ColorWheel End*********//
 
     }
     
