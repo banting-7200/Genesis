@@ -23,9 +23,9 @@ public class IntakeLiftCommand extends Command{
         boolean in = controller.getButton(Config.getInt("controls.intake.lift.in"));
         boolean out = controller.getButton(Config.getInt("controls.intake.lift.out"));
         if (in) {
-            liftSpark.start(0.2);
+            liftSpark.start(0.5);
           } else if (out) {
-            liftSpark.start(-0.2);
+            liftSpark.start(-0.5);
           } else {
             liftSpark.stop();
           }

@@ -50,9 +50,9 @@ public class Config {
         //*********Intake end*********//
 
         //**********Intake Lift***********//
-        set("intake.spark.id", 0);
-        set("controls.intake.in", 7);
-        set("controls.intake.out", 8);
+        set("intake.lift.spark.id", 2);
+        set("controls.intake.lift.in", 7);
+        set("controls.intake.lift.out", 8);
         //*********Intake Lift end*********//
 
     }//hello
