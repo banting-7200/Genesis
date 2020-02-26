@@ -18,7 +18,7 @@ public class Config {
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
-        set("motors.left_motors", new int[]{4, 3});
+        set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});
         set("lift.system", new int[]{10});
 

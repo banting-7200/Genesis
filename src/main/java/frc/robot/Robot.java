@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
     Controller controller = Config.getController("controls.main");
     Scheduler.getInstance().run();
     driveCommand.start();
-    liftCommand.start();
+    //liftCommand.start();
     colorCommand.start();
     
     boolean shootColorWheel = controller.getButton(6);
