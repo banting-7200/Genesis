@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
   
     Scheduler.getInstance().run();
     //driveCommand.start();
-    //liftCommand.start();
+    liftCommand.start();
     Controller controller = Config.getController("controls.main");
     //CSMSubsystem motor1 = new CSMSubsystem(7);
     //CSMSubsystem motor2 = new CSMSubsystem(4);
@@ -108,6 +108,7 @@ public class Robot extends TimedRobot {
     //if (controller.getButton(12)) {
     //  motor4.start(100);
     //}
+  
     boolean shootColorWheel = controller.getButton(6);
     boolean retractColorWheel = controller.getButton(7);
 //*****************Pneumatics*******************/

@@ -27,7 +27,7 @@ public class ColorSensorCommand extends Command {
     @Override
     public void execute() {
 
-        this.findColor.initialise();
+        Robot.m_colorsensorsubsystem.initialise();
 
         Color detectedColor = m_colorSensor.getColor();
 
