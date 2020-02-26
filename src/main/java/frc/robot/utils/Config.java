@@ -49,6 +49,12 @@ public class Config {
         set("controls.intake.out", 4);
         //*********Intake end*********//
 
+        //**********Intake Lift***********//
+        set("intake.spark.id", 0);
+        set("controls.intake.in", 7);
+        set("controls.intake.out", 8);
+        //*********Intake Lift end*********//
+
     }
     
     public static Object get(String name) {
