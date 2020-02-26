@@ -1,7 +1,5 @@
 package frc.robot.commands;
 
-
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.controllers.Controller;
 import frc.robot.subsystems.SparkSubsystem;
@@ -15,6 +13,7 @@ public class IntakeLiftCommand extends Command{
     public IntakeLiftCommand(){
         int SparkID = (Config.getInt("intake.lift.spark.id"));
         liftSpark = new SparkSubsystem(SparkID);
+
     }
 
     @Override
@@ -29,12 +28,14 @@ public class IntakeLiftCommand extends Command{
           } else {
             liftSpark.stop();
           }
+
+      
     }
 
     @Override
     protected boolean isFinished() {
-        // TODO Auto-generated method stub
-        return false;
+
+      return false;
     }
 
 }
