@@ -55,7 +55,7 @@ public class Config {
         set("controls.intake.out", 8);
         //*********Intake Lift end*********//
 
-    }
+    }//hello
     
     public static Object get(String name) {
         return configMap.get(name);
