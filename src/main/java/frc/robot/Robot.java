@@ -89,7 +89,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
   
     Scheduler.getInstance().run();
-    //driveCommand.start();
+    driveCommand.start();
     liftCommand.start();
     Controller controller = Config.getController("controls.main");
   
@@ -110,7 +110,6 @@ public class Robot extends TimedRobot {
     //  System.out.println("Bruh switch bruh switch");
     //  driveCommand.cancel();
     //}else{
-      driveCommand.start();
     //}
 //************Limit Switch Code END***************/
 

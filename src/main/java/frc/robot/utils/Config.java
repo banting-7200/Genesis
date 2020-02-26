@@ -32,7 +32,7 @@ public class Config {
         //************lift*************//
         set("controls.liftup", 5);
         set("controls.liftdown", 3);
-        set("lift.id",7);
+        set("lift.id",4);
         set("number.of.rotations",200);
         //**********lift end************//
 
