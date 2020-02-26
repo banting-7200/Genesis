@@ -5,9 +5,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.LiftCommand;
-import frc.robot.controllers.Controller;
 import frc.robot.subsystems.PneumaticsSubsystem;
-import frc.robot.utils.Config;
 
 public class LiftSubsystem extends Subsystem {
 

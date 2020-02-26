@@ -9,9 +9,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.controllers.Controller;
 import java.util.Arrays;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 public abstract class DriveTrainSubsystem extends Subsystem {
     /* Motors */
 

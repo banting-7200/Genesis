@@ -14,6 +14,7 @@ public class Config {
     static {
         set("sem.name", "Wall-E 2");
         set("sem.description", "The most epicest robot in this site of the galaxy");
+        
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
         set("defaults.controller_base_speed", 1.0);
@@ -28,8 +29,12 @@ public class Config {
         mainController.setPort(getInt("defaults.controller_port"));
         set("controls.main", mainController);
 
+        //************lift*************//
         set("controls.liftup", 5);
         set("controls.liftdown", 3);
+        set("lift.id",7);
+        set("number.of.rotations",200);
+        //**********lift end************//
 
     }
     
