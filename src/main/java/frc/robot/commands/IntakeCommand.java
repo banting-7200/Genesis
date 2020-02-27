@@ -20,9 +20,8 @@ public class IntakeCommand extends Command {
     protected void execute() {
         Controller controller = Config.getController("controls.main");
         boolean in = controller.getButton(Config.getInt("controls.intake.in"));
-      boolean out = controller.getButton(Config.getInt("controls.intake.out"));
+        boolean out = controller.getButton(Config.getInt("controls.intake.out"));
         if (in) {
-            System.out.println("Button 8 ");
             intakeSpark.start(0.4);
           } else if (out) {
             intakeSpark.start(-0.4);
@@ -38,15 +37,3 @@ public class IntakeCommand extends Command {
     }
 
 }
-
-
-/*
-if (controller.getButton(11)) {
-    System.out.println("Button 8 ");
-    intakeSpark.start(0.4);
-  } else if (controller.getButton(12)) {
-    intakeSpark.start(-0.4);
-  } else {
-    intakeSpark.stop();
-  }
-  */

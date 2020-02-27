@@ -49,7 +49,13 @@ public class Config {
         set("controls.intake.out", 4);
         //*********Intake end*********//
 
-    }
+        //**********Intake Lift***********//
+        set("intake.lift.spark.id", 2);
+        set("controls.intake.lift.in", 7);
+        set("controls.intake.lift.out", 8);
+        //*********Intake Lift end*********//
+
+    }//hello
     
     public static Object get(String name) {
         return configMap.get(name);
