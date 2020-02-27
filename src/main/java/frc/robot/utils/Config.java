@@ -78,4 +78,15 @@ public class Config {
     public static void set(String name, Object obj) {
         configMap.put(name, obj);
     }
+
+
+    /* Static variables */
+
+    /** Semantics **/
+    public static String ROBOT_NAME;
+    public static String DESCRIPTION;
+
+    /** Controls **/
+    public static double CONTROLLER_BASE_SPEED;
+    public static int CONTROLLER_1_PORT;
 }

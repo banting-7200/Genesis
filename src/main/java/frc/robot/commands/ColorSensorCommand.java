@@ -14,24 +14,24 @@ import frc.robot.Robot;
 public class ColorSensorCommand extends Command {
     public ColorSensorCommand() {
         requires(Robot.m_colorsensorsubsystem);
+        Robot.m_colorsensorsubsystem.initialise();
     }
 
     public ColorSensorSubsystem findColor;
+
+    public String colorString;
 
     public final I2C.Port i2cPort = I2C.Port.kOnboard; // Initializes the I2C port on the RoboRIO for the Color Sensor -
                                                        // D
     public final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort); // Initializes the color sensor for use
     public final ColorMatch m_colorMatcher = new ColorMatch(); // Creates an object that lets us match colours
-    public final ColorSensorSubsystem fingcolor = new ColorSensorSubsystem();
+    public final ColorSensorSubsystem findcolor = new ColorSensorSubsystem();
 
     @Override
     public void execute() {
 
-        Robot.m_colorsensorsubsystem.initialise();
-
         Color detectedColor = m_colorSensor.getColor();
 
-        String colorString;
         ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
 
         if (match.color == Robot.m_colorsensorsubsystem.kBlueTarget) {
