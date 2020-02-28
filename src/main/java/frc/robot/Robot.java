@@ -25,7 +25,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
-  public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
+  //public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
 
   I2CCOM arduinoI2C;
 

@@ -15,7 +15,7 @@ public class LiftCommand extends Command {
 
     public LiftCommand() {
         requires(Robot.m_liftsubsystem);
-        limitSwitch = new LimitSubsystem(0);
+        limitSwitch = new LimitSubsystem(11);
     }
 
     
