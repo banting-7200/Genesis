@@ -17,6 +17,10 @@ public class CSMSubsystem extends Subsystem {
         this.NEWCSM.set(0);// initially sets the motor to stop
     }
 
+    public CANEncoder getEncoder() {
+        return m_encoder;
+    }
+
     public void start(int speed) {
         this.NEWCSM.set(speed);
     }

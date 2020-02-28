@@ -4,14 +4,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.controllers.Controller;
-
+import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.utils.Config;
 
 
 
 public class LiftCommand extends Command {
+
+ private LimitSubsystem limitSwitch;
+
     public LiftCommand() {
         requires(Robot.m_liftsubsystem);
+        limitSwitch = new LimitSubsystem(0);
     }
 
     
@@ -28,8 +32,12 @@ public class LiftCommand extends Command {
       int CanID = (Config.getInt("lift.id"));
       int Rotation = (Config.getInt("number.of.rotations"));
 
+      if (limitSwitch.getLimit()){
+        Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0);
+        System.out.println(Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0));
+        System.out.println(Robot.m_liftsubsystem.Lift.getEncoder());
+      }
 
-      //if (!Robot.limitSwitch.getLimit()) {
       if (true) {
         if (liftUp){
             Robot.m_liftsubsystem.Lift.encoderup(CanID, Rotation);
