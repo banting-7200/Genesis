@@ -32,11 +32,11 @@ public class LiftCommand extends Command {
       int CanID = (Config.getInt("lift.id"));
       int Rotation = (Config.getInt("number.of.rotations"));
 
-      if (limitSwitch.getLimit()){
-        Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0);
-        System.out.println(Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0));
-        System.out.println(Robot.m_liftsubsystem.Lift.getEncoder());
-      }
+      //if (limitSwitch.getLimit()){
+        //Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0);
+        //System.out.println(Robot.m_liftsubsystem.Lift.getEncoder().setPosition(0.0));
+        //System.out.println(Robot.m_liftsubsystem.Lift.getEncoder());
+      //}
 
       if (true) {
         if (liftUp){
