@@ -5,14 +5,14 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 public class LimitSubsystem extends Subsystem {
 
-    public DigitalInput lSwitch;
+    public DigitalInput Switch;
 
     public LimitSubsystem(int port){
-        lSwitch = new DigitalInput(port);
+        Switch = new DigitalInput(port);
     }
 
     public boolean getLimit(){
-        return lSwitch.get();
+        return Switch.get();
     }
 
     @Override

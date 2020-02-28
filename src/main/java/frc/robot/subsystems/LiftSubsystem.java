@@ -20,7 +20,6 @@ public class LiftSubsystem extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-      setDefaultCommand(new LiftCommand());
 
     }
 }
