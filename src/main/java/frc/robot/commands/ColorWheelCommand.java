@@ -1,35 +1,37 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.controllers.Controller;
 import frc.robot.subsystems.PneumaticsSubsystem;
+import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.utils.Config;
 
 public class ColorWheelCommand extends Command{
-    private PneumaticsSubsystem colorwheelpiston;
+
+    private SparkSubsystem colorWheelMotor;
 
 
     public ColorWheelCommand(){
-        int CANPCM = (Config.getInt("pcm.id"));
-        int PCMPort = (Config.getInt("pcm.port"));
-
-        colorwheelpiston = new PneumaticsSubsystem(CANPCM, PCMPort);
+        colorWheelMotor = new SparkSubsystem(1);
     }
 
 
     @Override
     protected void execute() {
         Controller controller = Config.getController("controls.main");
-        boolean shootColorWheel = controller.getButton(Config.getInt("controls.colorwheel.shoot"));
-        boolean retractColorWheel = controller.getButton(Config.getInt("controls.colorwheel.retract"));
+        boolean shootColorWheel = controller.getButton(11);
+        boolean retractColorWheel = controller.getButton(12);
         if(shootColorWheel){
-          colorwheelpiston.ToggleSolenoid(true);
+          System.out.println("Colr whel! XDDDD");
+          colorWheelMotor.start(1);
           Robot.m_drivetrainsubsystem.setSpeed(0.5);
-        } 
-        if (retractColorWheel){
-          this.colorwheelpiston.ToggleSolenoid(false);
+        } else if (retractColorWheel){
+          colorWheelMotor.start(-1);
           Robot.m_drivetrainsubsystem.setSpeed(1);
+        } else {
+          colorWheelMotor.stop();
         }
 
     }

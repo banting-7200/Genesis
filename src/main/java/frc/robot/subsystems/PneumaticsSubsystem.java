@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.hal.util.UncleanStatusException;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -8,7 +9,11 @@ public class PneumaticsSubsystem extends Subsystem {
     public Solenoid NEWSOLENOID;
 
     public PneumaticsSubsystem (int CANPCM, int PCMPORT){
+        try {
         this.NEWSOLENOID = new Solenoid(CANPCM, PCMPORT);
+        } catch (UncleanStatusException ex) {
+            System.out.println("ERROR! ERROR! "+PCMPORT);
+        }
     }
 
     public void ToggleSolenoid (Boolean state){

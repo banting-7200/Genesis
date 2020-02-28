@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ColorSensorCommand;
+import frc.robot.commands.ColorWheelCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakeLiftCommand;
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
   Command colorCommand = new ColorSensorCommand();
   Command intakeCommand = new IntakeCommand();
   Command intakeLiftCommand = new IntakeLiftCommand();
+  Command colorWheelCommand = new ColorWheelCommand();
   Command m_autonomousCommand;
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -49,7 +51,6 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
-    this.colorwheelpiston = new PneumaticsSubsystem(1, 1);// setting the can Adress of the PCM and the port on PCM
 
   }
 
@@ -95,22 +96,12 @@ public class Robot extends TimedRobot {
     Controller controller = Config.getController("controls.main");
     Scheduler.getInstance().run();
     driveCommand.start();
+    colorWheelCommand.start();
     // liftCommand.start();
     colorCommand.start();
     intakeCommand.start();
     intakeLiftCommand.start();
-
-    boolean shootColorWheel = controller.getButton(6);
-    boolean retractColorWheel = controller.getButton(7);
     // *****************Pneumatics*******************/
-    if (shootColorWheel) {
-      this.colorwheelpiston.ToggleSolenoid(true);
-      m_drivetrainsubsystem.setSpeed(0.5);
-    }
-    if (retractColorWheel) {
-      this.colorwheelpiston.ToggleSolenoid(false);
-      m_drivetrainsubsystem.setSpeed(1);
-    }
     // ***************Pneumatics end*****************/
     // **************Limit Switch Code****************/
     // if (!limitSwitch.getLimit()){
