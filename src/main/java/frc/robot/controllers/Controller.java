@@ -24,4 +24,8 @@ public abstract class Controller {
 
     public abstract Object getController();
 
+	public boolean getPOV(int int1) {
+		return false;
+	}
+
 }

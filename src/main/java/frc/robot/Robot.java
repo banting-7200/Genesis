@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -28,7 +29,7 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
-  //public static LimitSubsystem limitSwitch =  new LimitSubsystem(1);
+  public static DigitalInput m_liftLimit = new DigitalInput(8);
   public static SparkSubsystem shiftSpark = new SparkSubsystem(7);
   public static LimitSubsystem limitSwitch = new LimitSubsystem(1);
 
@@ -60,8 +61,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    // this.findColor.ColorSencorSubsystem();
-    // System.out.println(findColor);
+    //this.findColor.ColorSencorSubsystem();
+    //System.out.println(findColor);
 
   }
 
@@ -76,24 +77,18 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
+    
   }
 
   @Override
   public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
+    
   }
 
   @Override
   public void teleopInit() {
     // CameraServer.getInstance().startAutomaticCapture();
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
+    
   }
 
   @Override
@@ -106,36 +101,10 @@ public class Robot extends TimedRobot {
     colorCommand.start();
     intakeCommand.start();
     intakeLiftCommand.start();
-    // *****************Pneumatics*******************/
-    // ***************Pneumatics end*****************/
-    // **************Limit Switch Code****************/
-    // if (!limitSwitch.getLimit()){
-    // System.out.println("Bruh switch bruh switch");
-    // driveCommand.cancel();
-    // }else{
-    // }
-    // ************Limit Switch Code END***************/
-
-    /*
-     * if (controller.getButton(1)) { arduinoI2C.sendData(1, 1); } if
-     * (controller.getButton(2)) { arduinoI2C.sendData(1, 0);
-     * 
-     * }
-     */
-
-    if (controller.getButton(10)) {
-      System.out.println("Button 10 be like");
-      this.shiftSpark.start(1);
-    } else if (controller.getButton(9)) {
-
-      System.out.println("Button 9 be like");
-      this.shiftSpark.start(-1);
-    } else {
-      this.shiftSpark.stop();
-    }
   }
 
   @Override
   public void testPeriodic() {
+
   }
 }
