@@ -1,6 +1,3 @@
-// Created by Danny at the bequest of Kaden
-// Also makes for good coding practice
-
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
