@@ -8,8 +8,6 @@ public abstract class Controller {
     public double speed;
 
     public Controller() {
-        setPort(Config.getInt("defaults.controller_port"));
-        setPort(Config.getInt("second.controller_port"));
         this.speed = Config.getDouble("defaults.controller_base_speed");
     }
 
