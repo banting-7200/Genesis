@@ -14,20 +14,31 @@ public class ColorWheelCommand extends Command{
 
 
     public ColorWheelCommand(){
-        colorWheelMotor = new SparkSubsystem(1);
+      int SpinWheel = (Config.getInt("color.wheel.spin.id"));
+      int Shoot = (Config.getInt("color.wheel.shoot.id"));
+      int Retract = (Config.getInt("color.wheel.retract.id"));
+      int PCMID = (Config.getInt("color.wheel.pcm.id"));
+        colorWheelMotor = new SparkSubsystem(SpinWheel);
+        //Robot.m_colourWheelShoot.pneumaticsSetup(PCMID,Shoot);
+        //Robot.m_colourWheelsRetract.pneumaticsSetup(PCMID, Retract);
     }
 
-
+//
     @Override
     protected void execute() {
-        Controller controller = Config.getController("controls.main");
-        boolean shootColorWheel = controller.getButton(11);
-        boolean retractColorWheel = controller.getButton(12);
-        if(shootColorWheel){
-          System.out.println("Colr whel! XDDDD");
+        Controller Pilot = Config.getController("controls.main");
+        Controller CoPilot = Config.getController("controls.co.pilot");
+
+        boolean shootColorWheel = CoPilot.getPOV(Config.getInt("controls.shoot.color.wheel"));
+        boolean retractColorWheel = CoPilot.getPOV(Config.getInt("controls.retract.color.wheel"));
+
+        boolean spinColorWheelr = CoPilot.getButton(Config.getInt("controls.spin.color.wheelr"));
+        boolean spinColorWheell = CoPilot.getButton(Config.getInt("controls.spin.color.wheell"));
+        
+        if(spinColorWheelr){
           colorWheelMotor.start(1);
           Robot.m_drivetrainsubsystem.setSpeed(0.5);
-        } else if (retractColorWheel){
+        } else if (spinColorWheell){
           colorWheelMotor.start(-1);
           Robot.m_drivetrainsubsystem.setSpeed(1);
         } else {

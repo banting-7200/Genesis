@@ -8,12 +8,15 @@ public class PneumaticsSubsystem extends Subsystem {
 
     public Solenoid NEWSOLENOID;
 
-    public PneumaticsSubsystem (int CANPCM, int PCMPORT){
+    public PneumaticsSubsystem (){
+    }
+    
+    public void pneumaticsSetup(int CANPCM, int PCMPORT){
         try {
-        this.NEWSOLENOID = new Solenoid(CANPCM, PCMPORT);
-        } catch (UncleanStatusException ex) {
-            System.out.println("ERROR! ERROR! "+PCMPORT);
-        }
+            this.NEWSOLENOID = new Solenoid(CANPCM, PCMPORT);
+            } catch (UncleanStatusException ex) {
+                System.out.println("ERROR! ERROR! "+PCMPORT);
+            }
     }
 
     public void ToggleSolenoid (Boolean state){

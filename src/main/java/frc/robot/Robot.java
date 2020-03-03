@@ -28,6 +28,9 @@ import frc.robot.utils.I2CCOM;
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
+  //public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
+  //public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
+
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static DigitalInput m_liftLimit = new DigitalInput(8);
   public static SparkSubsystem shiftSpark = new SparkSubsystem(7);
@@ -36,7 +39,6 @@ public class Robot extends TimedRobot {
   I2CCOM arduinoI2C;
 
   public PingController pingController;
-  public PneumaticsSubsystem colorwheelpiston;
 
   public ColorSensorSubsystem findColor;
 

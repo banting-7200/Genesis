@@ -18,9 +18,14 @@ public class IntakeCommand extends Command {
 
     @Override
     protected void execute() {
-        Controller controller = Config.getController("controls.main");
-        boolean in = controller.getButton(Config.getInt("controls.intake.in"));
-        boolean out = controller.getButton(Config.getInt("controls.intake.out"));
+      Controller Pilot = Config.getController("controls.main");
+      Controller CoPilot = Config.getController("controls.co.pilot");
+
+        boolean in = CoPilot.getButton(Config.getInt("controls.intake.in"));
+        boolean out = CoPilot.getButton(Config.getInt("controls.intake.out"));
+        
+        boolean frontroller = Pilot.getButton(Config.getInt("controls.front.roller.pilot"));
+
         if (in) {
             intakeSpark.start(0.4);
           } else if (out) {
@@ -28,6 +33,12 @@ public class IntakeCommand extends Command {
           } else {
             intakeSpark.stop();
           }
+        
+        if (frontroller){
+          intakeSpark.start(-0.4);
+        }else{
+          intakeSpark.stop();
+        }
     }
 
     @Override

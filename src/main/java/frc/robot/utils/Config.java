@@ -17,6 +17,7 @@ public class Config {
 
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
+        set("second.controller_port", 1);
         set("defaults.controller_base_speed", 1.0);
         set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});
@@ -28,41 +29,46 @@ public class Config {
         Controller mainController = new LogitechJoystick();
         Controller coPilotController = new LogitechJoystick();
         mainController.setPort(getInt("defaults.controller_port"));
-        coPilotController.setPort(getInt("defaults.controller_port"));
+        coPilotController.setPort(getInt("second.controller_port"));
         set("controls.main", mainController);
         set("controls.co.pilot", coPilotController);
 
          //************lift*************//
-         set("controls.liftup", 5);
-         set("controls.liftdown", 3);
-         set("controls.lift.shift.l",10);
-         set("controls.lift.shift.r",11);
+         set("controls.liftup", 6);
+         set("controls.liftdown", 4);
+         set("controls.lift.shift.l",90); //pov
+         set("controls.lift.shift.r",180); //pov
          set("number.of.rotations",-200);
          set("lift.up.fast.pos",-179);
          set("lift.up.slow.pos",-180);
          set("lift.down.fast.pos",-50);
          set("lift.down.slow.pos",-49);
-         set("lift.can.id",4);
+         set("lift.can.id",7);
          set("lift.switch.pin",8);
          //**********lift end************//
 
         //*********ColorWheel***********//
-        set("pcm.id", 1);
-        set("pcm.port", 1);
-        set("controls.colorwheel.shoot", 12);
-        set("controls.colorwheel.retract", 11);
+        set("color.wheel.spin.id", 1);
+        set("color.wheel.shoot.id", 0);
+        set("color.wheel.retract.id", 1);
+        set("color.wheel.pcm.id", 1);
+        set("controls.shoot.color.wheel",0);
+        set("controls.retract.color.wheel",180);
+        set("controls.spin.color.wheelr",12);
+        set("controls.spin.color.wheell",11);
         //*******ColorWheel End*********//
 
         //**********Intake***********//
         set("intake.spark.id", 3);
-        set("controls.intake.in", 6);
-        set("controls.intake.out", 4);
+        set("controls.intake.in", 2);
+        set("controls.intake.out", 1);
+        set("controls.front.roller.pilot", 1);
         //*********Intake end*********//
 
         //**********Intake Lift***********//
         set("intake.lift.spark.id", 2);
-        set("controls.intake.lift.in", 7);
-        set("controls.intake.lift.out", 8);
+        set("controls.intake.lift.in", 5);
+        set("controls.intake.lift.out", 3);
         //*********Intake Lift end*********//
 
     }//hello

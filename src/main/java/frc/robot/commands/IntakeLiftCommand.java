@@ -18,9 +18,11 @@ public class IntakeLiftCommand extends Command{
 
     @Override
     protected void execute() {
-        Controller controller = Config.getController("controls.main");
-        boolean in = controller.getButton(Config.getInt("controls.intake.lift.in"));
-        boolean out = controller.getButton(Config.getInt("controls.intake.lift.out"));
+      Controller Pilot = Config.getController("controls.main");
+      Controller CoPilot = Config.getController("controls.co.pilot");
+
+        boolean in = CoPilot.getButton(Config.getInt("controls.intake.lift.in"));
+        boolean out = CoPilot.getButton(Config.getInt("controls.intake.lift.out"));
         if (in) {
             liftSpark.start(0.5);
           } else if (out) {

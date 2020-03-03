@@ -9,10 +9,11 @@ public class LiftSubsystem extends Subsystem {
     public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
     public PneumaticsSubsystem LiftlockPiston;
     public static int SRotation;
+    
 
     public LiftSubsystem() {
-        this.Lift = new CSMSubsystem(4);
-        this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
+        this.Lift = new CSMSubsystem(7);
+        //this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
     }
 
     @Override

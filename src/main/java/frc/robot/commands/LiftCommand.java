@@ -20,12 +20,14 @@ public class LiftCommand extends Command {
 
       //Robot.m_liftsubsystem.LiftlockPiston.ToggleSolenoid(false);
 
-      Controller controller = Config.getController("controls.co.pilot");
+      Controller Pilot = Config.getController("controls.main");
+      Controller CoPilot = Config.getController("controls.co.pilot");
 
-      boolean liftUp = controller.getButton(Config.getInt("controls.liftup"));
-      boolean liftDown = controller.getButton(Config.getInt("controls.liftdown"));
-      boolean liftShiftSparkL = controller.getButton(Config.getInt("controls.lift.shift.l"));
-      boolean liftShiftSparkR = controller.getButton(Config.getInt("controls.lift.shift.r"));
+
+      boolean liftUp = CoPilot.getButton(Config.getInt("controls.liftup"));
+      boolean liftDown = CoPilot.getButton(Config.getInt("controls.liftdown"));
+      boolean liftShiftSparkL = CoPilot.getPOV(Config.getInt("controls.lift.shift.l"));
+      boolean liftShiftSparkR = CoPilot.getPOV(Config.getInt("controls.lift.shift.r"));
       int CanID = (Config.getInt("lift.can.id"));
       int Rotation = (Config.getInt("number.of.rotations"));
       int FastSpeedUp = (Config.getInt("lift.up.fast.pos"));
