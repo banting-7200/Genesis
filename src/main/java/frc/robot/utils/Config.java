@@ -17,11 +17,7 @@ public class Config {
 
         set("controls.base_speed", 1.0);
         set("defaults.controller_port", 0);
-<<<<<<< HEAD
         set("second.controller_port", 1);
-=======
-        set("defaults.controller_port_second", 1);
->>>>>>> 937ec2c3b52c287b02dca52f32d815c95955e254
         set("defaults.controller_base_speed", 1.0);
         set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});
@@ -33,11 +29,7 @@ public class Config {
         Controller mainController = new LogitechJoystick();
         Controller coPilotController = new LogitechJoystick();
         mainController.setPort(getInt("defaults.controller_port"));
-<<<<<<< HEAD
         coPilotController.setPort(getInt("second.controller_port"));
-=======
-        coPilotController.setPort(getInt("defaults.controller_port_second"));
->>>>>>> 937ec2c3b52c287b02dca52f32d815c95955e254
         set("controls.main", mainController);
         set("controls.co.pilot", coPilotController);
 
