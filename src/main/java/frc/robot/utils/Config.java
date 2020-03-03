@@ -16,8 +16,8 @@ public class Config {
         set("sem.description", "The most epicest robot in this site of the galaxy");
 
         set("controls.base_speed", 1.0);
-        set("defaults.controller_port", 1);
-        set("second.controller_port", 2);
+        set("defaults.controller_port", 0);
+        set("second.controller_port", 1);
         set("defaults.controller_base_speed", 1.0);
         set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});

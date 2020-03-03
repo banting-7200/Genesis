@@ -8,6 +8,7 @@ public abstract class Controller {
     public double speed;
 
     public Controller() {
+        
         this.speed = Config.getDouble("defaults.controller_base_speed");
     }
 
