@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -51,7 +52,7 @@ public class Robot extends TimedRobot {
   Command intakeCommand = new IntakeCommand();
   Command intakeLiftCommand = new IntakeLiftCommand();
   Command colorWheelCommand = new ColorWheelCommand();
-  Command autonomouousCommand = new AutonomousCommand();
+  //Command autonomouousCommand = new AutonomousCommand();
   Command m_autonomousCommand;
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -61,6 +62,10 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", new DriveCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
     CameraServer.getInstance().startAutomaticCapture();
+    UsbCamera camera1;
+    UsbCamera camera2;
+    camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+    camera2 = CameraServer.getInstance().startAutomaticCapture(1);
 
 
   }
@@ -95,6 +100,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     // CameraServer.getInstance().startAutomaticCapture();
+    
     
   }
 
