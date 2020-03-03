@@ -29,7 +29,7 @@ public class Config {
         Controller mainController = new LogitechJoystick();
         Controller coPilotController = new LogitechJoystick();
         mainController.setPort(getInt("defaults.controller_port"));
-        coPilotController.setPort(getInt("defaults.controller_port"));
+        coPilotController.setPort(getInt("defaults.controller_port_second"));
         set("controls.main", mainController);
         set("controls.co.pilot", coPilotController);
 
