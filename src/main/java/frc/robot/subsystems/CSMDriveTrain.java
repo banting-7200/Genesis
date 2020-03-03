@@ -34,6 +34,11 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
 
     }
 
+    public void manualdrive(double d, double e) {
+        drive_train.arcadeDrive(d, e);
+    }
+
+
     @Override
     public void drive(double movementSpeed, double turnSpeed, double speed) {
         drive_train.tankDrive(movementSpeed * speed, turnSpeed * speed);

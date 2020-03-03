@@ -12,6 +12,7 @@ import frc.robot.commands.ColorWheelCommand;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakeLiftCommand;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.LiftCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
@@ -20,6 +21,7 @@ import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.subsystems.CSMDriveTrain;
+import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.base.DriveTrainSubsystem;
 import frc.robot.utils.Config;
@@ -28,6 +30,7 @@ import frc.robot.utils.I2CCOM;
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
+  public static CSMDriveTrain m_CsmDriveTrain = new CSMDriveTrain();
   //public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
   //public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
 
@@ -48,6 +51,7 @@ public class Robot extends TimedRobot {
   Command intakeCommand = new IntakeCommand();
   Command intakeLiftCommand = new IntakeLiftCommand();
   Command colorWheelCommand = new ColorWheelCommand();
+  Command autonomouousCommand = new AutonomousCommand();
   Command m_autonomousCommand;
 
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -84,6 +88,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    
     
   }
 
