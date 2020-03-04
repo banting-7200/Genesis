@@ -72,6 +72,12 @@ public class Config {
         set("controls.intake.lift.out", 3);
         //*********Intake Lift end*********//
 
+        //*************Pixy****************//
+        set("pixy.ball.track", 3);
+        //***********Pixy End**************//
+
+
+
     }//hello
     
     public static Object get(String name) {

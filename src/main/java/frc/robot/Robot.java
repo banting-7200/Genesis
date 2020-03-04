@@ -15,6 +15,7 @@ import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakeLiftCommand;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.LiftCommand;
+import frc.robot.commands.PixyCommand;
 import frc.robot.controllers.Controller;
 import frc.robot.controllers.PingController;
 import frc.robot.subsystems.PneumaticsSubsystem;
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
   Command intakeCommand = new IntakeCommand();
   Command intakeLiftCommand = new IntakeLiftCommand();
   Command colorWheelCommand = new ColorWheelCommand();
+  Command pixyCommand = new PixyCommand();
   //Command autonomouousCommand = new AutonomousCommand();
   Command m_autonomousCommand;
 
@@ -118,6 +120,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testPeriodic() {
-
+    pixyCommand.start();
   }
 }
