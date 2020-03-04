@@ -27,10 +27,8 @@ public class Config {
         set("ping.trig", 1);
         set("ping.echo", 2);
 
-        Controller mainController = new LogitechJoystick();
-        Controller coPilotController = new LogitechJoystick();
-        mainController.setPort(getInt("joystick.pilot"));
-        coPilotController.setPort(getInt("joystick.co.pilot"));
+        Controller mainController = new LogitechJoystick(getInt("joystick.pilot"));
+        Controller coPilotController = new LogitechJoystick(getInt("joystick.co.pilot"));
         set("pilot.controll", mainController);
         set("co.pilot.controll", coPilotController);
 

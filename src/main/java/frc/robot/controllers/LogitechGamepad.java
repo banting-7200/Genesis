@@ -6,7 +6,8 @@ public class LogitechGamepad extends Controller {
 
     Joystick joystick = new Joystick(this.port);
     
-    public LogitechGamepad() {
+    public LogitechGamepad(int port) {
+        this.port = port;
         this.speed = 0.75;
     }
 

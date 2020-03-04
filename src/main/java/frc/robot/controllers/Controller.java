@@ -11,10 +11,6 @@ public abstract class Controller {
         
         this.speed = Config.getDouble("defaults.controller_base_speed");
     }
-
-    public void setPort(int port) {
-        this.port = port;
-    }
     
     public abstract double getX(); // This is used for the turning speed (i.e, left & right);
     public abstract double getY(); // This is used for the directional speed (i.e, forwards & backwards)
