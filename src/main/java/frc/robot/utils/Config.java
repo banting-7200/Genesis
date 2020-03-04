@@ -14,10 +14,11 @@ public class Config {
     static {
         set("sem.name", "Wall-E 2");
         set("sem.description", "The most epicest robot in this site of the galaxy");
-
+        
+        set("joystick.pilot", 0);
+        set("joystick.co.pilot", 1);
+        
         set("controls.base_speed", 1.0);
-        set("defaults.controller_port", 0);
-        set("second.controller_port", 1);
         set("defaults.controller_base_speed", 1.0);
         set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});
@@ -28,10 +29,10 @@ public class Config {
 
         Controller mainController = new LogitechJoystick();
         Controller coPilotController = new LogitechJoystick();
-        mainController.setPort(getInt("defaults.controller_port"));
-        coPilotController.setPort(getInt("second.controller_port"));
-        set("controls.main", mainController);
-        set("controls.co.pilot", coPilotController);
+        mainController.setPort(getInt("joystick.pilot"));
+        coPilotController.setPort(getInt("joystick.co.pilot"));
+        set("pilot.controll", mainController);
+        set("co.pilot.controll", coPilotController);
 
          //************lift*************//
          set("controls.liftup", 6);

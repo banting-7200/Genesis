@@ -18,6 +18,10 @@ public class LogitechJoystick extends Controller {
         return joystick.getZ();
     }
 
+    public int getPOV(int angle) {
+        return joystick.getPOV(angle);
+    }
+
     public boolean getButton(int button) {
         return joystick.getRawButton(button);
     }

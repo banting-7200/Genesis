@@ -47,4 +47,10 @@ public class PingController extends Controller {
         return subsystem;
     }
 
+    @Override
+    public int getPOV(int angle) {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
 }

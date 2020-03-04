@@ -22,10 +22,9 @@ public abstract class Controller {
 
     public abstract boolean getButton(int button);
 
-    public abstract Object getController();
+    public abstract int getPOV(int angle);
 
-	public boolean getPOV(int int1) {
-		return false;
-	}
+    public abstract Object getController();
+ 
 
 }

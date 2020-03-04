@@ -29,4 +29,7 @@ public class LogitechGamepad extends Controller {
     public Object getController() {
         return joystick;
     }
+    public int getPOV(int angle) {
+        return joystick.getPOV(angle);
+    }
 }
