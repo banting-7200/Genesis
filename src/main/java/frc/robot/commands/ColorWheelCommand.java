@@ -26,14 +26,14 @@ public class ColorWheelCommand extends Command{
 //
     @Override
     protected void execute() {
-        Controller Pilot = Config.getController("joystick.pilot");
-        Controller CoPilot = Config.getController("joystick.co.pilot");
+        Controller Pilot = Config.getController("pilot.controll");
+        Controller CoPilot = Config.getController("co.pilot.controll");
 
-        int shootColorWheel = CoPilot.getPOV(Config.getInt("controls.shoot.color.wheel"));
-        int retractColorWheel = CoPilot.getPOV(Config.getInt("controls.retract.color.wheel"));
+       // int shootColorWheel = CoPilot.getPOV(Config.getInt("controls.shoot.color.wheel"));
+       // int retractColorWheel = CoPilot.getPOV(Config.getInt("controls.retract.color.wheel"));
 
-        boolean spinColorWheelr = CoPilot.getButton(Config.getInt("controls.spin.color.wheelr"));
-        boolean spinColorWheell = CoPilot.getButton(Config.getInt("controls.spin.color.wheell"));
+        boolean spinColorWheelr = CoPilot.getButton(11);
+        boolean spinColorWheell = CoPilot.getButton(12);
         
         if(spinColorWheelr){
           colorWheelMotor.start(1);

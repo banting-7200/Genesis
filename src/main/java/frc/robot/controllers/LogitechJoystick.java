@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class LogitechJoystick extends Controller {
 
-    Joystick joystick = new Joystick(this.port);
+    Joystick joystick = new Joystick(0);
+    Joystick joystick = new Joystick(1);
 
     public double getX() {
         return joystick.getX();
@@ -16,10 +17,6 @@ public class LogitechJoystick extends Controller {
 
     public double getZ() {
         return joystick.getZ();
-    }
-
-    public int getPOV(int angle) {
-        return joystick.getPOV(angle);
     }
 
     public boolean getButton(int button) {

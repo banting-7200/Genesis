@@ -22,8 +22,6 @@ public abstract class Controller {
 
     public abstract boolean getButton(int button);
 
-    public abstract int getPOV(int angle);
-
     public abstract Object getController();
  
 

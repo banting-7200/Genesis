@@ -18,8 +18,8 @@ public class IntakeLiftCommand extends Command{
 
     @Override
     protected void execute() {
-      Controller Pilot = Config.getController("joystick.pilot");
-      Controller CoPilot = Config.getController("joystick.co.pilot");
+      Controller Pilot = Config.getController("pilot.controll");
+      Controller CoPilot = Config.getController("co.pilot.controll");
 
         boolean in = CoPilot.getButton(Config.getInt("controls.intake.lift.in"));
         boolean out = CoPilot.getButton(Config.getInt("controls.intake.lift.out"));

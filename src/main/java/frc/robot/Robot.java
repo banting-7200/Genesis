@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
   Command intakeCommand = new IntakeCommand();
   Command intakeLiftCommand = new IntakeLiftCommand();
   Command colorWheelCommand = new ColorWheelCommand();
-  Command pixyCommand = new PixyCommand();
+  //Command pixyCommand = new PixyCommand();
   //Command autonomouousCommand = new AutonomousCommand();
   Command m_autonomousCommand;
 
@@ -120,6 +120,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testPeriodic() {
-    pixyCommand.start();
+    //pixyCommand.start();
   }
 }
