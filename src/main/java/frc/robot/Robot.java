@@ -108,7 +108,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    Controller controller = Config.getController("controls.main");
     Scheduler.getInstance().run();
     driveCommand.start();
     colorWheelCommand.start();

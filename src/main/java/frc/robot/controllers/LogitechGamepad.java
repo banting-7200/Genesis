@@ -4,9 +4,10 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class LogitechGamepad extends Controller {
 
-    Joystick joystick = new Joystick(this.port);
+    Joystick joystick;
     
-    public LogitechGamepad() {
+    public LogitechGamepad(int port) {
+        joystick = new Joystick(this.port);
         this.speed = 0.75;
     }
 
