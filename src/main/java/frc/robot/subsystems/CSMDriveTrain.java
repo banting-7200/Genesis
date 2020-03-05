@@ -28,7 +28,7 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     @Override
     public void drive(Controller joystick) {
 
-        System.out.println(joystick.getX()+", "+joystick.getY());
+        //System.out.println(joystick.getX()+", "+joystick.getY());
 
         drive_train.arcadeDrive((joystick.getY()*Config.getDouble("defaults.controller_base_speed"))*-1, (joystick.getX()*Config.getDouble("defaults.controller_base_speed")));        //drive_train.tankDrive(joystick.getY(), joystick.getY());
 

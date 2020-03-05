@@ -24,6 +24,8 @@ public class CSMSubsystem extends Subsystem {
 
     public void start(int speed){
         this.NEWCSM.set(speed);
+        NEWCSM.setSmartCurrentLimit(60);
+
     }
 
     public void stop(){
@@ -40,8 +42,10 @@ public class CSMSubsystem extends Subsystem {
     public void encoderup(int canadress, int rotation, int slowposition, int fastposition){
         this.m_encoder = new CANEncoder(NEWCSM);
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
+        NEWCSM.setSmartCurrentLimit(60);
         double liftspeed = 0;
         double liftpos = (m_encoder.getPosition());
+        System.out.println(liftpos);
         if (liftpos > fastposition){// should be -179
             liftspeed = -1;
         }if (liftpos < slowposition){ // should be in this case -180
@@ -56,6 +60,7 @@ public class CSMSubsystem extends Subsystem {
     public void encoderdown(int canadress, int rotation, int slowposition, int fastposition){
         this.m_encoder = new CANEncoder(NEWCSM);
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
+        NEWCSM.setSmartCurrentLimit(60);
         double liftspeed = 0;
         double liftpos = (m_encoder.getPosition());
         if (Robot.m_liftLimit.get()){

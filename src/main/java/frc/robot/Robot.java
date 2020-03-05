@@ -26,6 +26,7 @@ import frc.robot.subsystems.CSMDriveTrain;
 import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.base.DriveTrainSubsystem;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.utils.Config;
 import frc.robot.utils.I2CCOM;
 
@@ -33,15 +34,18 @@ public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
   public static CSMDriveTrain m_CsmDriveTrain = new CSMDriveTrain();
-  //public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
-  //public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
+  public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
+  public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
+  public static PneumaticsSubsystem m_liftLock = new PneumaticsSubsystem();
 
   public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static DigitalInput m_liftLimit = new DigitalInput(8);
-  public static SparkSubsystem shiftSpark = new SparkSubsystem(7);
+  public static SparkSubsystem shiftSpark = new SparkSubsystem(0);
   public static LimitSubsystem limitSwitch = new LimitSubsystem(1);
+  public static Timer m_timer = new Timer();	
 
   I2CCOM arduinoI2C;
+ 
 
   public PingController pingController;
 
@@ -70,12 +74,12 @@ public class Robot extends TimedRobot {
     camera2 = CameraServer.getInstance().startAutomaticCapture(1);
 
 
+
   }
 
   @Override
   public void robotPeriodic() {
-    //this.findColor.ColorSencorSubsystem();
-    //System.out.println(findColor);
+    
 
   }
 
@@ -100,18 +104,18 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void teleopInit() {
-    // CameraServer.getInstance().startAutomaticCapture();
-    
+  public void teleopInit() {    
     
   }
 
   @Override
   public void teleopPeriodic() {
+    m_timer.start();
+    m_timer.reset();
     Scheduler.getInstance().run();
     driveCommand.start();
     colorWheelCommand.start();
-    // liftCommand.start();
+    liftCommand.start();
     colorCommand.start();
     intakeCommand.start();
     intakeLiftCommand.start();

@@ -35,8 +35,8 @@ public class Config {
          //************lift*************//
          set("controls.liftup", 6);
          set("controls.liftdown", 4);
-         set("controls.lift.shift.l",90); //pov
-         set("controls.lift.shift.r",180); //pov
+         set("controls.lift.shift.l",7); //pov
+         set("controls.lift.shift.r",8); //pov
          set("number.of.rotations",-200);
          set("lift.up.fast.pos",-179);
          set("lift.up.slow.pos",-180);
