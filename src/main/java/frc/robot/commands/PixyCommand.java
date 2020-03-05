@@ -42,7 +42,7 @@ public class PixyCommand extends Command{
             double servoangle = (i2cbuffer[0]);
             double driveAngle = (servoangle) / 20; //creats angle to make the bot follow balls
 
-            Robot.m_CsmDriveTrain.manualdrive(0.6, turnSpeed);// makes roBoi follow balls
+            Robot.m_drivetrainsubsystem.drive(0.6, turnSpeed, 0.6);// makes roBoi follow balls
 
             turnSpeed = driveAngle;
 

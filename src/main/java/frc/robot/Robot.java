@@ -23,7 +23,6 @@ import frc.robot.subsystems.SparkSubsystem;
 import frc.robot.subsystems.LimitSubsystem;
 import frc.robot.subsystems.LiftSubsystem;
 import frc.robot.subsystems.CSMDriveTrain;
-import frc.robot.subsystems.CSMSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.base.DriveTrainSubsystem;
 import edu.wpi.first.wpilibj.Timer;
@@ -33,12 +32,11 @@ import frc.robot.utils.I2CCOM;
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
-  public static CSMDriveTrain m_CsmDriveTrain = new CSMDriveTrain();
+  //public static CSMDriveTrain m_CsmDriveTrain = new CSMDriveTrain();
   public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
   public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
   public static PneumaticsSubsystem m_liftLock = new PneumaticsSubsystem();
 
-  public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
   public static DigitalInput m_liftLimit = new DigitalInput(8);
   public static SparkSubsystem shiftSpark = new SparkSubsystem(0);
   public static LimitSubsystem limitSwitch = new LimitSubsystem(1);
@@ -105,14 +103,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {    
-    
   }
 
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().run();
     m_timer.start();
     m_timer.reset();
-    Scheduler.getInstance().run();
     driveCommand.start();
     colorWheelCommand.start();
     liftCommand.start();

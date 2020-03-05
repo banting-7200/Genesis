@@ -47,9 +47,9 @@ public class AutonomousCommand extends Command{
         liftSpark.stop();
       } 
       if (timer.get()>0.1){
-        Robot.m_CsmDriveTrain.manualdrive(0.5, 0.5);
+        Robot.m_drivetrainsubsystem.drive(0.5, 0.5, 0.5);
       }if (timer.get()>3){
-        Robot.m_CsmDriveTrain.manualdrive(0, 0);
+        Robot.m_drivetrainsubsystem.drive(0, 0, 0);
         liftSpark.start(-0.5);
         intakeSpark.start(0.6);
       }else{
@@ -57,11 +57,11 @@ public class AutonomousCommand extends Command{
         intakeSpark.stop();
       }
       if (timer.get()>7){
-        Robot.m_CsmDriveTrain.manualdrive(0.5, -0.5);
+        Robot.m_drivetrainsubsystem.drive(0.5, -0.5, 0.5);
         if(angle<90){
-          Robot.m_CsmDriveTrain.manualdrive(0, 0);
+          Robot.m_drivetrainsubsystem.drive(0, 0, 0);
         }else{
-          Robot.m_CsmDriveTrain.manualdrive(0.5, -0.5);
+          Robot.m_drivetrainsubsystem.drive(0.5, -0.5, 0.5);
         }
       }
 

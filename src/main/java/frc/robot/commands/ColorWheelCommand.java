@@ -32,16 +32,11 @@ public class ColorWheelCommand extends Command{
        // int shootColorWheel = CoPilot.getPOV(Config.getInt("controls.shoot.color.wheel"));
        // int retractColorWheel = CoPilot.getPOV(Config.getInt("controls.retract.color.wheel"));
 
-        boolean spinColorWheelr = CoPilot.getButton(11);
-        boolean spinColorWheell = CoPilot.getButton(12);
+        boolean spinColorWheelr = CoPilot.getButton(2);
         
         if(spinColorWheelr){
           colorWheelMotor.start(1);
-          Robot.m_drivetrainsubsystem.setSpeed(0.5);
-        } else if (spinColorWheell){
-          colorWheelMotor.start(-1);
-          Robot.m_drivetrainsubsystem.setSpeed(1);
-        } else {
+        } else{
           colorWheelMotor.stop();
         }
 

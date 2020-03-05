@@ -60,9 +60,11 @@ public class LiftCommand extends Command {
             //Timer.delay(0.5);
             Robot.m_liftsubsystem.Lift.encoderdown(CanID, Rotation, SlowSpeedDown, FastSpeedDown);
           }else{
-            Robot.m_liftsubsystem.Lift.stop();
-            //Timer.delay(0.5);
             Robot.m_liftLock.ToggleSolenoid(false);
+            //Timer.delay(0.5);
+            Robot.m_liftsubsystem.Lift.stop();
+            
+            
           }
         }
      // }

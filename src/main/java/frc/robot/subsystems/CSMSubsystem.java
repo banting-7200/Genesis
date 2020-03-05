@@ -38,7 +38,7 @@ public class CSMSubsystem extends Subsystem {
         this.m_encoder.setPosition(reset);
         
     }
-
+    
     public void encoderup(int canadress, int rotation, int slowposition, int fastposition){
         this.m_encoder = new CANEncoder(NEWCSM);
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);

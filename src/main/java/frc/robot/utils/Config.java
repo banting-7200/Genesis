@@ -33,10 +33,10 @@ public class Config {
         set("co.pilot.controll", coPilotController);
 
          //************lift*************//
-         set("controls.liftup", 6);
-         set("controls.liftdown", 4);
-         set("controls.lift.shift.l",7); //pov
-         set("controls.lift.shift.r",8); //pov
+         set("controls.liftup", 11);
+         set("controls.liftdown", 12);
+         set("controls.lift.shift.l",5); 
+         set("controls.lift.shift.r",6); 
          set("number.of.rotations",-200);
          set("lift.up.fast.pos",-179);
          set("lift.up.slow.pos",-180);
@@ -52,22 +52,21 @@ public class Config {
         set("color.wheel.retract.id", 1);
         set("color.wheel.pcm.id", 1);
         set("controls.shoot.color.wheel",0);
-        set("controls.retract.color.wheel",180);
-        set("controls.spin.color.wheelr",12);
-        set("controls.spin.color.wheell",11);
+        set("controls.retract.color.wheel",0);
+        set("controls.spin.color.wheelr",9);
+        set("controls.spin.color.wheell",10);
         //*******ColorWheel End*********//
 
         //**********Intake***********//
         set("intake.spark.id", 3);
-        set("controls.intake.in", 2);
-        set("controls.intake.out", 1);
-        set("controls.front.roller.pilot", 1);
+        set("controls.intake.in", 1);
+        set("controls.intake.out", 2);
         //*********Intake end*********//
 
         //**********Intake Lift***********//
         set("intake.lift.spark.id", 2);
-        set("controls.intake.lift.in", 5);
-        set("controls.intake.lift.out", 3);
+        set("controls.intake.lift.in", 7);
+        set("controls.intake.lift.out", 8);
         //*********Intake Lift end*********//
 
         //*************Pixy****************//
