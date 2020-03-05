@@ -13,12 +13,11 @@ public class LiftSubsystem extends Subsystem {
 
     public LiftSubsystem() {
         this.Lift = new CSMSubsystem(7);
-        //this.LiftlockPiston = new PneumaticsSubsystem(1, 2);
     }
 
     @Override
     protected void initDefaultCommand() {
-      setDefaultCommand(new LiftCommand());
+      //setDefaultCommand(new LiftCommand());
 
     }
 }
