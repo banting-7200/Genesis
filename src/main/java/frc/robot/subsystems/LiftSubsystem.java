@@ -12,7 +12,7 @@ public class LiftSubsystem extends Subsystem {
     
 
     public LiftSubsystem() {
-        this.Lift = new CSMSubsystem(7);
+        //this.Lift = new CSMSubsystem(7);
     }
 
     @Override

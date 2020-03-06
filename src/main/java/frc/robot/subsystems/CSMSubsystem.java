@@ -18,14 +18,13 @@ public class CSMSubsystem extends Subsystem {
     
     public CSMSubsystem(int canadress) {
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);// new brushless motor object for elevator
-        this.NEWCSM.set(0);// initially sets the motor to stop
-
+        this.m_encoder = new CANEncoder(NEWCSM);
+       // this.NEWCSM.set(0);// initially sets the motor to stop
+        NEWCSM.setSmartCurrentLimit(60);
     }
 
     public void start(int speed){
         this.NEWCSM.set(speed);
-        NEWCSM.setSmartCurrentLimit(60);
-
     }
 
     public void stop(){
@@ -34,15 +33,10 @@ public class CSMSubsystem extends Subsystem {
 
     public void encoderReset(){
         double reset = 0;
-        this.m_encoder = new CANEncoder(NEWCSM);
         this.m_encoder.setPosition(reset);
-        
     }
     
     public void encoderup(int canadress, int rotation, int slowposition, int fastposition){
-        this.m_encoder = new CANEncoder(NEWCSM);
-        this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
-        NEWCSM.setSmartCurrentLimit(60);
         double liftspeed = 0;
         double liftpos = (m_encoder.getPosition());
         System.out.println(liftpos);
@@ -58,9 +52,6 @@ public class CSMSubsystem extends Subsystem {
     }
 
     public void encoderdown(int canadress, int rotation, int slowposition, int fastposition){
-        this.m_encoder = new CANEncoder(NEWCSM);
-        this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);
-        NEWCSM.setSmartCurrentLimit(60);
         double liftspeed = 0;
         double liftpos = (m_encoder.getPosition());
         if (Robot.m_liftLimit.get()){

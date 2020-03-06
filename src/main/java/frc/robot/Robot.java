@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
   public static PneumaticsSubsystem m_liftLock = new PneumaticsSubsystem();
 
-  public static LiftSubsystem m_liftsubsystem = new LiftSubsystem();
+  public static CSMSubsystem m_CsmSubsystem = new CSMSubsystem(7);
   public static DigitalInput m_liftLimit = new DigitalInput(8);
   public static SparkSubsystem shiftSpark = new SparkSubsystem(0);
   public static LimitSubsystem limitSwitch = new LimitSubsystem(1);
