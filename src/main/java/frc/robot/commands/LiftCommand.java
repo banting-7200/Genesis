@@ -22,7 +22,7 @@ public class LiftCommand extends Command {
     @Override
     protected void execute() {
 
-      Robot.m_liftLock.ToggleSolenoid(false);
+      //Robot.m_liftLock.ToggleSolenoid(false);
 
       Controller Pilot = Config.getController("pilot.controll");
       Controller CoPilot = Config.getController("co.pilot.controll");
@@ -47,20 +47,20 @@ public class LiftCommand extends Command {
         }   
         //if (Robot.m_timer.get()>10){
         if (liftUp){
-            Robot.m_liftLock.ToggleSolenoid(true);
+            //Robot.m_liftLock.ToggleSolenoid(true);
             //Timer.delay(0.5);
             Robot.m_liftsubsystem.Lift.encoderup(CanID, Rotation, SlowSpeedUp, FastSpeedUp);
           }else{
-            Robot.m_liftLock.ToggleSolenoid(false);
+            //Robot.m_liftLock.ToggleSolenoid(false);
             //Timer.delay(0.5);
             Robot.m_liftsubsystem.Lift.stop();
           }
           if (liftDown){
-            Robot.m_liftLock.ToggleSolenoid(true);
+            //Robot.m_liftLock.ToggleSolenoid(true);
             //Timer.delay(0.5);
             Robot.m_liftsubsystem.Lift.encoderdown(CanID, Rotation, SlowSpeedDown, FastSpeedDown);
           }else{
-            Robot.m_liftLock.ToggleSolenoid(false);
+            //Robot.m_liftLock.ToggleSolenoid(false);
             //Timer.delay(0.5);
             Robot.m_liftsubsystem.Lift.stop();
             
