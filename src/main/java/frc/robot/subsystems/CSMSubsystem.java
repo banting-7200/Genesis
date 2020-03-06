@@ -20,7 +20,8 @@ public class CSMSubsystem extends Subsystem {
         this.NEWCSM = new CANSparkMax(canadress, MotorType.kBrushless);// new brushless motor object for elevator
         this.m_encoder = new CANEncoder(NEWCSM);
        // this.NEWCSM.set(0);// initially sets the motor to stop
-        NEWCSM.setSmartCurrentLimit(60);
+        NEWCSM.setSmartCurrentLimit(90);
+        
     }
 
     public void start(int speed){
