@@ -33,7 +33,6 @@ import frc.robot.utils.I2CCOM;
 public class Robot extends TimedRobot {
   public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
   public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
-  //public static CSMDriveTrain m_CsmDriveTrain = new CSMDriveTrain();
   public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
   public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
   public static PneumaticsSubsystem m_liftLock = new PneumaticsSubsystem();
