@@ -45,6 +45,7 @@ public class ColorSensorCommand extends Command {
         } else {
             colorString = "Unknown";
         }
+        //SmartDashboard.putin("Color", colorString);
         /*
          * The below section sends the data we recieved to the Smart Dashboard
          */

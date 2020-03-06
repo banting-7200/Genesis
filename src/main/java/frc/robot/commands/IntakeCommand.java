@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 import frc.robot.controllers.Controller;
 import frc.robot.subsystems.SparkSubsystem;
 
@@ -9,26 +10,21 @@ import frc.robot.utils.Config;
 
 public class IntakeCommand extends Command {
 
-    private SparkSubsystem intakeSpark; 
-
     public IntakeCommand() {
-        int SparkID = (Config.getInt("intake.spark.id"));
-        intakeSpark = new SparkSubsystem(SparkID);
     }
 
     @Override
     protected void execute() {
       Controller Pilot = Config.getController("pilot.controll");
-      Controller CoPilot = Config.getController("co.pilot.controll");
-
+      
         boolean in = Pilot.getButton(Config.getInt("controls.intake.in"));
         boolean out = Pilot.getButton(Config.getInt("controls.intake.out"));
         if (in) {
-            intakeSpark.start(0.6);
+            Robot.m_ballSparkSubsystem.start(0.6);
           } else if (out) {
-            intakeSpark.start(-0.6);
+            Robot.m_ballSparkSubsystem.start(-0.6);
           } else {
-            intakeSpark.stop();
+            Robot.m_ballSparkSubsystem.stop();
           }
     }
 

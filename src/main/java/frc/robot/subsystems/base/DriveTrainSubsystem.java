@@ -60,5 +60,5 @@ public abstract class DriveTrainSubsystem extends Subsystem {
 
     public abstract void drive(Controller joystick);
 
-    public abstract void drive(double movementSpeed, double turnSpeed, double speed);
+    public abstract void drive(double x, double y);
 }
