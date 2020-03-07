@@ -29,8 +29,14 @@ public class CSMDriveTrain extends DriveTrainSubsystem {
     public void drive(Controller joystick) {
 
         //System.out.println(joystick.getX()+", "+joystick.getY());
+        int reverse = 1;
+        if ((boolean) Config.get("drive.reverse")) {
+            reverse = -1;
+        } else {
+            reverse = 1;
+        }
 
-        drive_train.arcadeDrive((joystick.getY()*Config.getDouble("defaults.controller_base_speed"))*-1, (joystick.getX()*Config.getDouble("defaults.controller_base_speed")));        //drive_train.tankDrive(joystick.getY(), joystick.getY());
+        drive_train.arcadeDrive(reverse*(joystick.getY()*Config.getDouble("defaults.controller_base_speed"))*-1, reverse*(joystick.getX()*Config.getDouble("defaults.controller_base_speed")));        //drive_train.tankDrive(joystick.getY(), joystick.getY());
 
     }
 
