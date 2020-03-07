@@ -121,22 +121,22 @@ public class Robot extends TimedRobot {
     }else if(a_timer.get()<2 ){
       Robot.m_intakelift.start(0.5);
       Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust);
-    }else if (a_timer.get()<4.1){ //time driving fowards 
+    }else if (a_timer.get()<4.5){ //time driving fowards 
       Robot.m_intakelift.stop();
       Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust);
-    }else if (a_timer.get()>4.1 && a_timer.get()<4.5){
+    }else if (a_timer.get()>4.5 && a_timer.get()<5){
       Robot.m_drivetrainsubsystem.drive(0,0);
       Robot.m_ballSparkSubsystem.start(1); //stops and shoots ball 
-    }else if (a_timer.get()>4.5 && a_timer.get()<6){
+    }else if (a_timer.get()>5 && a_timer.get()<6.4){
       Robot.m_ballSparkSubsystem.stop(); // back up a little
       Robot.m_drivetrainsubsystem.drive(0.4, angle); 
-    }else if(a_timer.get()>6 && a_timer.get() <6.4){
+    }else if(a_timer.get()>6.4 && a_timer.get() <6.8){
       Robot.m_drivetrainsubsystem.drive(0.2,90);// first turn
-    }else if(a_timer.get()>6.4 && a_timer.get()<9){
+    }else if(a_timer.get()>6.8 && a_timer.get()<9.4){
       Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust); //drive
-    }else if (a_timer.get()>9 && a_timer.get()<9.4){
+    }else if (a_timer.get()>9.4 && a_timer.get()<9.8){
       Robot.m_drivetrainsubsystem.drive(0.2,90); // second turn
-    }else if (a_timer.get()>9.4 && a_timer.get()<12){
+    }else if (a_timer.get()>9.8 && a_timer.get()<14){
       Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust); // drive
     }
     else{
