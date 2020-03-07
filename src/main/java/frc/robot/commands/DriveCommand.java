@@ -18,7 +18,7 @@ public class DriveCommand extends Command {
     Robot.m_drivetrainsubsystem.setSpeed(Config.getDouble("controls.base_speed"));
     if (Config.getController("pilot.controll").getButton(8)) {
       Config.set("drive.reverse", true);
-    } else {
+    } else if (Config.getController("pilot.controll").getButton(7)) {
       Config.set("drive.reverse", false);
     }
     if (!Config.getController("pilot.controll").getButton(11)) {

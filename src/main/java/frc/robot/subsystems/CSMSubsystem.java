@@ -57,7 +57,7 @@ public class CSMSubsystem extends Subsystem {
         double liftpos = (m_encoder.getPosition());
         if (Robot.m_liftLimit.get()){
             liftspeed = 0;
-            this.m_encoder.setPosition(0);
+     //       this.m_encoder.setPosition(0);
         }else{
         if (liftpos < fastposition){ //should be set to -50
             liftspeed = 1;
