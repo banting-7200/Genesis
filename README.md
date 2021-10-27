@@ -23,3 +23,6 @@ Things to remember:
 03: CAN Spark MAX
 
 Look in TODO.md for an updated list of things I'd like to get done before competition season starts.
+=======
+Check out (our Trello)[https://trello.com/b/8QvxfFTF/banting-robotics] if you want a place to start.
+
