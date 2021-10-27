@@ -8,12 +8,8 @@ public abstract class Controller {
     public double speed;
 
     public Controller() {
-        setPort(Config.getInt("defaults.controller_port"));
+        
         this.speed = Config.getDouble("defaults.controller_base_speed");
-    }
-
-    public void setPort(int port) {
-        this.port = port;
     }
     
     public abstract double getX(); // This is used for the turning speed (i.e, left & right);
@@ -21,5 +17,8 @@ public abstract class Controller {
     public abstract double getZ(); 
 
     public abstract boolean getButton(int button);
+
+    public abstract Object getController();
+ 
 
 }

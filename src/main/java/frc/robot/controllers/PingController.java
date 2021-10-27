@@ -43,4 +43,8 @@ public class PingController extends Controller {
         return false;
     }
 
+    public Object getController() {
+        return subsystem;
+    }
+
 }

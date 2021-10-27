@@ -1,7 +1,7 @@
 # Team 7200's Robot Code
 
 A command-based robot.
-
+Not Up to date
 ## Vendor Libs
 
 Vendor libraries to install alongside WPILib
@@ -16,6 +16,13 @@ Things to remember:
 - Try to keep systems and commands seperated
 - Follow the code style
 
-Look in TODO.md for an updated list of things I'd like to get done before competition season starts.
+## CAN Devices
 
+01: Pneumatics Controller
+02: Power distribution board
+03: CAN Spark MAX
+
+Look in TODO.md for an updated list of things I'd like to get done before competition season starts.
+=======
 Check out (our Trello)[https://trello.com/b/8QvxfFTF/banting-robotics] if you want a place to start.
+

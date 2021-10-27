@@ -4,7 +4,12 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class LogitechJoystick extends Controller {
 
-    Joystick joystick = new Joystick(this.port);
+    Joystick joystick;
+
+    public LogitechJoystick(int port) {
+        this.port = port;
+        joystick = new Joystick(this.port);
+    }
 
     public double getX() {
         return joystick.getX();
@@ -19,7 +24,11 @@ public class LogitechJoystick extends Controller {
     }
 
     public boolean getButton(int button) {
-        return this.joystick.getRawButton(button);
+        return joystick.getRawButton(button);
+    }
+
+    public Object getController() {
+        return joystick;
     }
 
 }

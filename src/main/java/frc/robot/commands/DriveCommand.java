@@ -15,7 +15,15 @@ public class DriveCommand extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"), Config.getDouble("controls.base_speed"));
+    Robot.m_drivetrainsubsystem.setSpeed(Config.getDouble("controls.base_speed"));
+    if (Config.getController("pilot.controll").getButton(8)) {
+      Config.set("drive.reverse", true);
+    } else if (Config.getController("pilot.controll").getButton(7)) {
+      Config.set("drive.reverse", false);
+    }
+    if (!Config.getController("pilot.controll").getButton(11)) {
+      Robot.m_drivetrainsubsystem.drive(Config.getController("pilot.controll"));      
+    }
   }
 
   @Override
@@ -25,7 +33,8 @@ public class DriveCommand extends Command {
 
   @Override
   protected void end() {
-    Robot.m_drivetrainsubsystem.drive(Config.getController("controls.main"), 0);
+    Robot.m_drivetrainsubsystem.setSpeed(0);
+    Robot.m_drivetrainsubsystem.drive(Config.getController("pilot.controll"));
   }
 
   @Override
