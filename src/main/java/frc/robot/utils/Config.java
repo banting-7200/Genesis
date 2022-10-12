@@ -18,11 +18,11 @@ public class Config {
         set("joystick.pilot",0);
         set("joystick.co.pilot",1);
 
-        set("controls.base_speed", 1.0);
-        set("defaults.controller_base_speed", 1.0);
+        set("controls.base_speed", 0.6);
+        set("defaults.controller_base_speed", 0.6);
         set("motors.left_motors", new int[]{3, 4});
         set("motors.right_motors", new int[]{5, 6});
-        set("lift.system", new int[]{10});
+        set("lift.system", new int[]{3});
 
         set("ping.trig", 1);
         set("ping.echo", 2);
