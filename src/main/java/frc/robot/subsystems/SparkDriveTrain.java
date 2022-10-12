@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.subsystems.base.DriveTrainSubsystem;
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.controllers.Controller;
 import frc.robot.utils.Config;
