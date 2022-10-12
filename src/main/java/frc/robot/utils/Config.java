@@ -16,7 +16,7 @@ public class Config {
         set("sem.description", "The most epicest robot in this site of the galaxy");
         
         set("joystick.pilot",0);
-        set("joystick.co.pilot",1);
+        set("joystick.co.pilot",0);
 
         set("controls.base_speed", 1.0);
         set("defaults.controller_base_speed", 1.0);
