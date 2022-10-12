@@ -16,7 +16,7 @@ public class LogitechJoystick extends Controller {
     }
 
     public double getY() {
-        return joystick.getY() * -1;
+        return joystick.getY() * -2;
     }
 
     public double getZ() {
