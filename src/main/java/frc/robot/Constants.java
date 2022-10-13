@@ -20,19 +20,38 @@ import edu.wpi.first.wpilibj.Joystick;
 public final class Constants {
     public static Map<String, Object> map = new HashMap<String, Object>();
 
+    private static Joystick currentJoystick;
+    private static Joystick getJoystickInstance() {
+        if(currentJoystick == null) {
+            currentJoystick = new Joystick(0);
+        }
+
+        return currentJoystick;
+    }
+
     static {
-        set("robot.name", "Genesis");
-
-        //Make speed a value from 0 to 1
-        //The speed of motors is represented as a percentage.
-        set("robot.speed", 0.55);
-
+        set("robot.name", "Genesis-Updated");
+        
+        /* Joystick Control Constants */
         //Store the primary joystick as a constant
-        set("robot.joystick", new Joystick(0));
+        set("robot.joystick", getJoystickInstance());
+
+        //Axis labels
+        set("robot.joystick.x", 0); //left-right axis on big joystick
+        set("robot.joystick.y", 1); //fwd-back axis on big joystick
+
+        //Some Personal Preference Constants
+        set("robot.joystick.invert_stick_x", false); //Invert the large joystick left-right?
+        set("robot.joystick.invert_stick_y", true); //Invert the large joystick fwd-back?
 
         //Store motors on robot grouped by sides.
         set("robot.motors.left_motors", new int[]{3, 4});
         set("robot.motors.right_motors", new int[]{5, 6});
+
+        //Make speed a value from 0 to 1
+        //The speed of motors is represented as a percentage.
+        set("robot.speed", 0.45);
+        set("robot.liftspeed", 0.33);
     }
 
     private static void set(String key, Object value) {
