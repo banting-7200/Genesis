@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.JoyStickSubSystem;
 
 /*
@@ -26,7 +27,9 @@ public class LiftCommand extends CommandBase{
 
     @Override
     public void execute() {
-        double liftAxis = joyStickSubSystem.getAxisButtons(5, 3);
+        int liftUpButton = (int)Constants.getValue("robot.joystick.button_lift_up");
+        int liftDownButton = (int)Constants.getValue("robot.joystick.button_lift_down");
+        double liftAxis = joyStickSubSystem.getAxisButtons(liftUpButton, liftDownButton);
         System.out.println("liftAxis: " + liftAxis);
 
         //TODO: have liftAxis influence motors

@@ -4,19 +4,15 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commandgroups.DriveAndLiftGroup;
 import frc.robot.commands.DriveCommand;
 import frc.robot.commands.LiftCommand;
 import frc.robot.subsystems.JoyStickSubSystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
-/**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
- * subsystems, commands, and button mappings) should be declared here.
+/*
+ * This class contains instances of subsystems, and commands
+ * Controls are declared in constants class using a HashMap
  */
 public class RobotContainer {
   
@@ -26,21 +22,6 @@ public class RobotContainer {
   private static final LiftCommand m_LiftCommand = new LiftCommand(m_joyStickSubSystem);
   private static final DriveCommand m_DriveCommand = new DriveCommand(m_joyStickSubSystem);
   public static final DriveAndLiftGroup m_DriveAndLiftGroup = new DriveAndLiftGroup(m_DriveCommand, m_LiftCommand);
-
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-    // Configure the button bindings
-    configureButtonBindings();
-  }
-
-  /**
-   * Use this method to define your button->command mappings. Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
-  private void configureButtonBindings() {
-  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

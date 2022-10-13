@@ -39,11 +39,16 @@ public final class Constants {
         //Axis labels
         set("robot.joystick.x", 0); //left-right axis on big joystick
         set("robot.joystick.y", 1); //fwd-back axis on big joystick
+        
+        //Declare buttons responsible for moving lift up and down.
+        set("robot.joystick.button_lift_up", 5);
+        set("robot.joystick.button_lift_down", 3);
 
         //Some Personal Preference Constants
         set("robot.joystick.invert_stick_x", false); //Invert the large joystick left-right?
         set("robot.joystick.invert_stick_y", true); //Invert the large joystick fwd-back?
 
+        /* Robot Constants */
         //Store motors on robot grouped by sides.
         set("robot.motors.left_motors", new int[]{3, 4});
         set("robot.motors.right_motors", new int[]{5, 6});
