@@ -35,7 +35,7 @@ public final class Constants {
         /* Joystick Control Constants */
         //Store the primary joystick as a constant
         set("robot.joystick", getJoystickInstance());
-
+        
         //Axis labels
         set("robot.joystick.x", 0); //left-right axis on big joystick
         set("robot.joystick.y", 1); //fwd-back axis on big joystick
@@ -47,7 +47,9 @@ public final class Constants {
         //Some Personal Preference Constants
         set("robot.joystick.invert_stick_x", false); //Invert the large joystick left-right?
         set("robot.joystick.invert_stick_y", true); //Invert the large joystick fwd-back?
+        set("robot.joystick.deadzone", 0.01);
 
+        
         /* Robot Constants */
         //Store motors on robot grouped by sides.
         set("robot.motors.left_motors", new int[]{3, 4});
