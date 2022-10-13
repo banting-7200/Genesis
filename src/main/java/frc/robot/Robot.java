@@ -1,173 +1,96 @@
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
+
 package frc.robot;
 
-import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ColorSensorCommand;
-import frc.robot.commands.ColorWheelCommand;
-import frc.robot.commands.DriveCommand;
-import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.IntakeLiftCommand;
-import frc.robot.commands.AutonomousCommand;
-import frc.robot.commands.LiftCommand;
-import frc.robot.commands.PixyCommand;
-import frc.robot.controllers.Controller;
-import frc.robot.controllers.PingController;
-import frc.robot.subsystems.PneumaticsSubsystem;
-import frc.robot.subsystems.SparkSubsystem;
-import frc.robot.subsystems.LimitSubsystem;
-import frc.robot.subsystems.LiftSubsystem;
-import frc.robot.subsystems.CSMDriveTrain;
-import frc.robot.subsystems.CSMSubsystem;
-import frc.robot.subsystems.ColorSensorSubsystem;
-import frc.robot.subsystems.base.DriveTrainSubsystem;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogGyro;
-import edu.wpi.first.wpilibj.SPI.Port;
-import edu.wpi.first.wpilibj.Timer;
-import frc.robot.utils.Config;
-import frc.robot.utils.I2CCOM;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
+/**
+ * The VM is configured to automatically run this class, and to call the functions corresponding to
+ * each mode, as described in the TimedRobot documentation. If you change the name of this class or
+ * the package after creating this project, you must also update the build.gradle file in the
+ * project.
+ */
 public class Robot extends TimedRobot {
-  public static DriveTrainSubsystem m_drivetrainsubsystem = new CSMDriveTrain(); // CAN Spark MAX motor
-  public static ColorSensorSubsystem m_colorsensorsubsystem = new ColorSensorSubsystem();
-  public static PneumaticsSubsystem m_colourWheelShoot = new PneumaticsSubsystem();
-  public static PneumaticsSubsystem m_colourWheelsRetract = new PneumaticsSubsystem();
-  public static PneumaticsSubsystem m_liftLock = new PneumaticsSubsystem();
-  public static SparkSubsystem m_intakelift = new SparkSubsystem(2);
-  public static SparkSubsystem m_ballSparkSubsystem = new SparkSubsystem(3);
 
-  public static CSMSubsystem m_CsmSubsystem = new CSMSubsystem(7);
-  public static DigitalInput m_liftLimit = new DigitalInput(8);
-  public static SparkSubsystem shiftSpark = new SparkSubsystem(0);
-  public static LimitSubsystem limitSwitch = new LimitSubsystem(1);
-  public static Timer m_timer = new Timer();	
-  public static Timer a_timer = new Timer();
+  //m prefix means main
+  private Command m_autonomousCommand;
+  private RobotContainer m_robotContainer;
 
-  I2CCOM arduinoI2C;
-  public Gyro gyro;		
-
-  public PingController pingController;
-
-  public ColorSensorSubsystem findColor;
-
-  Command driveCommand = new DriveCommand();
-  Command liftCommand = new LiftCommand();
-  Command colorCommand = new ColorSensorCommand();
-  Command intakeCommand = new IntakeCommand();
-  Command intakeLiftCommand = new IntakeLiftCommand();
-  Command colorWheelCommand = new ColorWheelCommand();
-  //Command pixyCommand = new PixyCommand();
-  Command autonomouousCommand = new AutonomousCommand();
-  Command m_autonomousCommand;
-
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
-
+  /**
+   * This function is run when the robot is first started up and should be used for any
+   * initialization code.
+   */
   @Override
   public void robotInit() {
-    m_chooser.setDefaultOption("Default Auto", new DriveCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
-    CameraServer.startAutomaticCapture();
-    UsbCamera camera1;
-    UsbCamera camera2;
-    camera1 = CameraServer.startAutomaticCapture(0);
-    camera2 = CameraServer.startAutomaticCapture(1);
-    gyro = new ADXRS450_Gyro(Port.kOnboardCS0);
-    gyro.reset();	
-
-
-
+    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // autonomous chooser on the dashboard.
+    m_robotContainer = new RobotContainer();
   }
 
+  /**
+   * This function is called every robot packet, no matter the mode. Use this for items like
+   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
+   * <p>This runs after the mode specific periodic functions, but before LiveWindow and
+   * SmartDashboard integrated updating.
+   */
   @Override
   public void robotPeriodic() {
-    
-
+    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
+    // commands, running already-scheduled commands, removing finished or interrupted commands,
+    // and running subsystem periodic() methods.  This must be called from the robot's periodic
+    // block in order for anything in the Command-based framework to work.
+    CommandScheduler.getInstance().run();
   }
+
+  /** This function is called once each time the robot enters Disabled mode. */
+  @Override
+  public void disabledInit() {}
 
   @Override
-  public void disabledInit() {
-  }
+  public void disabledPeriodic() {}
 
-  @Override
-  public void disabledPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
+  /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    a_timer.start();
-    a_timer.reset();
+    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
-
-  }
-
-  @Override
-  public void autonomousPeriodic() {
-    gyro.reset();	
-    double adjust = 0.15;
-    double angle = gyro.getAngle();
-    System.out.println("gyro angle:  ");
-    System.out.println(angle);
-    if (a_timer.get()<0.5 ){
-    Robot.m_intakelift.start(-0.5);
-    Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust);
-    }else if(a_timer.get()<2 ){
-      Robot.m_intakelift.start(0.5);
-      Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust);
-    }else if (a_timer.get()<4.5){ //time driving fowards 
-      Robot.m_intakelift.stop();
-      Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust);
-    }else if (a_timer.get()>4.5 && a_timer.get()<5){
-      Robot.m_drivetrainsubsystem.drive(0,0);
-      Robot.m_ballSparkSubsystem.start(1); //stops and shoots ball 
-    }else if (a_timer.get()>5 && a_timer.get()<6.4){
-      Robot.m_ballSparkSubsystem.stop(); // back up a little
-      Robot.m_drivetrainsubsystem.drive(0.4, angle); 
-    }else if(a_timer.get()>6.4 && a_timer.get() <6.8){
-      Robot.m_drivetrainsubsystem.drive(0.2,90);// first turn
-    }else if(a_timer.get()>6.8 && a_timer.get()<9.4){
-      Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust); //drive
-    }else if (a_timer.get()>9.4 && a_timer.get()<9.8){
-      Robot.m_drivetrainsubsystem.drive(0.2,90); // second turn
-    }else if (a_timer.get()>9.8 && a_timer.get()<14){
-      Robot.m_drivetrainsubsystem.drive(-0.4, -angle*adjust); // drive
-    }
-    else{
-      Robot.m_drivetrainsubsystem.drive(0,0);
-      Robot.m_intakelift.stop();
+    // schedule the autonomous command (example)
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.schedule();
     }
   }
 
+  /** This function is called periodically during autonomous. */
   @Override
-  public void teleopInit() { 
-    m_timer.start();
-    m_timer.reset();
-
-  }
+  public void autonomousPeriodic() {}
 
   @Override
-  public void teleopPeriodic() {
-    Scheduler.getInstance().run();
-    driveCommand.start();
-    colorWheelCommand.start();
-    liftCommand.start();
-    colorCommand.start();
-    intakeCommand.start();
-    intakeLiftCommand.start();
+  public void teleopInit() {
+    // This makes sure that the autonomous stops running when
+    // teleop starts running. If you want the autonomous to
+    // continue until interrupted by another command, remove
+    // this line or comment it out.
+    if (m_autonomousCommand != null) {
+      m_autonomousCommand.cancel();
+    }
   }
 
+  /** This function is called periodically during operator control. */
   @Override
-  public void testPeriodic() {
-    //pixyCommand.start();
-    double angle = gyro.getAngle();
-    System.out.println("gyro angle:  ");
-    System.out.println(angle*100);
+  public void teleopPeriodic() {}
+
+  @Override
+  public void testInit() {
+    // Cancels all running commands at the start of test mode.
+    CommandScheduler.getInstance().cancelAll();
   }
+
+  /** This function is called periodically during test mode. */
+  @Override
+  public void testPeriodic() {}
 }

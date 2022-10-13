@@ -25,8 +25,5 @@
       }
     },
   ],
-  "java.test.defaultConfig": "WPIlibUnitTests",
-  "java.import.gradle.home": "C:\\Program Files\\Java\\jdk-11.0.16",
-  "java.import.gradle.java.home": "C:\\Program Files\\Java\\jdk-11.0.16",
-  "java.import.gradle.user.home": "C:\\Program Files\\Java\\jdk-11.0.16"
+  "java.test.defaultConfig": "WPIlibUnitTests"
 }

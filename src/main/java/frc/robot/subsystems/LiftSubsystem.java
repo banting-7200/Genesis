@@ -1,23 +1,27 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.LiftCommand;
-import frc.robot.subsystems.PneumaticsSubsystem;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class LiftSubsystem extends Subsystem {
+/*
+ * This class is responsible for the vertical lift on the Genesis robot
+ */
+public class LiftSubSystem extends SubsystemBase  {
 
-    public CSMSubsystem Lift;//creats a vareable for a CSM (CSMSubsystem)
-    public PneumaticsSubsystem LiftlockPiston;
-    public static int SRotation;
-    
+    private Joystick targetJoyStick;
 
-    public LiftSubsystem() {
-        //this.Lift = new CSMSubsystem(7);
+    // Create new instance of subsystem
+    public LiftSubSystem() {
+        targetJoyStick = (Joystick)Constants.getValue("robot.joystick");
     }
 
+    // Runs every scheduler run
     @Override
-    protected void initDefaultCommand() {
-      //setDefaultCommand(new LiftCommand());
+    public void periodic() {
+        // Get the top little joystick vertical axis
+        double liftDirection = targetJoyStick.getRawAxis(6);
 
+        //TODO: Run lift motor in the direction determined by the liftDirection.
     }
 }
