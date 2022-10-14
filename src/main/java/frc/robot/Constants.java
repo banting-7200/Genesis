@@ -47,13 +47,21 @@ public final class Constants {
         //Some Personal Preference Constants
         set("robot.joystick.invert_stick_x", false); //Invert the large joystick left-right?
         set("robot.joystick.invert_stick_y", true); //Invert the large joystick fwd-back?
-        set("robot.joystick.deadzone", 0.01);
+        set("robot.joystick.deadzone", 0.01); // The amount the large joystick should be moved before activating logic.
 
         
         /* Robot Constants */
-        //Store motors on robot grouped by sides.
+        //Store motors on robot
         set("robot.motors.left_motors", new int[]{3, 4});
         set("robot.motors.right_motors", new int[]{5, 6});
+        set("robot.motors.lift_motor", 7);
+
+        //Lift parameters
+        set("robot.motors.lift_motor_max_rotations", -200);
+        set("robot.solenoids.lift_lock_channel", 2);
+
+        set("robot.lift.lower_position_limit", -200);
+        set("robot.lift.upper_position_limit", -1);
 
         //Make speed a value from 0 to 1
         //The speed of motors is represented as a percentage.

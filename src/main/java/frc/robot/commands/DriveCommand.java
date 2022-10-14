@@ -46,6 +46,7 @@ public class DriveCommand extends CommandBase{
         isRunning = true;
     }
 
+    // The motor code below for Genesis is not guaranteed to work
     @Override
     public void execute() {
         //Get the axis IDs for the joystick from Constants.java
