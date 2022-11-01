@@ -17,6 +17,7 @@ import frc.Constants;
 public class Robot extends TimedRobot {
 
   private RobotDrive driveInstance;
+  private RobotLift liftInstance;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -62,18 +63,34 @@ public class Robot extends TimedRobot {
   /** This function is called once when teleop is enabled. */
   @Override
   public void teleopInit() {
-    driveInstance = new RobotDrive(Constants.LEFT_MOTORS, Constants.RIGHT_MOTORS, new Joystick(0), 0.5f);
+    driveInstance = new RobotDrive(
+      Constants.LEFT_MOTORS, 
+      Constants.RIGHT_MOTORS, 
+      new Joystick(0), 
+      0.5f
+    );
+
+    liftInstance = new RobotLift(
+      new Joystick(0), 
+      Constants.LIFT_MOTOR, 
+      0.3,
+      Constants.LIFT_UP, 
+      Constants.LIFT_DOWN
+    );
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
     driveInstance.pollDrive();
+    liftInstance.pollLift();
   }
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+
+  }
 
   /** This function is called periodically when disabled. */
   @Override
