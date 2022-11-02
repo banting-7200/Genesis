@@ -5,6 +5,6 @@ public class Constants {
     public static final int[] RIGHT_MOTORS = new int[] {5, 6};
     public static final int LIFT_MOTOR = 7;
 
-    public static final int LIFT_UP = 5;
-    public static final int LIFT_DOWN = 3;
+    public static final int LIFT_BUTTONUP = 5;
+    public static final int LIFT_BUTTONDOWN = 3;
 }

@@ -2,11 +2,29 @@ package frc.robot;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj.Joystick;
 
-public class RobotLift {
+/* About
+ * This class is responsible for moving the robot lift up/down.
+ * In order for the limiters 
+ */
 
+/* Reference1
+ * If motor is at lowermost bound (0),
+ * check if the driver wants to move the lift down
+ *  if the driver wants to move the lift down, set delta to 0, otherwise keep delta as is.
+ * 
+ * If motorposition is not at lowermost bound, keep delta as is
+ */
+
+/* Reference2
+ * If motor is at uppermost bound (-215),
+ * check if the driver wants to move the lift up
+ *  if the driver wants to move the lift up, set delta to 0, otherwise keep delta as is.
+ * 
+ * If motorposition is not at uppermost bound, keep delta as is.
+ */
+public class RobotLift {
     private Joystick inputDevice;
     private CANSparkMax liftMotor;
     private double liftSpeed;
@@ -22,33 +40,21 @@ public class RobotLift {
         this.upButton = upButton;
     }
 
+    /*
+     * Main RobotDrive loop. (Called from Robot.java TeleopPeriodic)
+     */
     public void pollLift() {
-        
-        // invert delta as up moves lift down, and down moves lift up
         double delta = -getLiftDirection(downButton, upButton) * liftSpeed;
         double currentMotorPosition = liftMotor.getEncoder().getPosition();
 
-        // -215 is upper bound of lift, and 0 is lower bound of lift
-        if(currentMotorPosition <= -215) {
-            if(delta < 0) {
-                delta = 0;
-            }
-        } else if(currentMotorPosition >= 0) {
-            if(delta > 0) {
-                delta = 0;
-            }
-        }
-
+        delta = currentMotorPosition <= -215 ? (delta < 0 ? 0 : delta) : delta; //refer to Reference1
+        delta = currentMotorPosition >= 0 ? (delta > 0 ? 0 : delta) : delta; //refer to Reference2
         liftMotor.set(delta);
     }
 
     private double getLiftDirection(int downButton, int upButton) {
-        if(inputDevice.getRawButton(upButton)) {
-            return 1;
-        } else if(inputDevice.getRawButton(downButton)) {
-            return -1;
-        }
-
-        return 0;
+        boolean upPressed = inputDevice.getRawButton(upButton);
+        boolean downPressed = inputDevice.getRawButton(downButton);
+        return upPressed ? 1 : downPressed ? -1 : 0;
     }
 }

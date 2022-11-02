@@ -74,8 +74,8 @@ public class Robot extends TimedRobot {
       new Joystick(0), 
       Constants.LIFT_MOTOR, 
       0.3,
-      Constants.LIFT_UP, 
-      Constants.LIFT_DOWN
+      Constants.LIFT_BUTTONUP, 
+      Constants.LIFT_BUTTONDOWN
     );
   }
 
@@ -88,9 +88,7 @@ public class Robot extends TimedRobot {
 
   /** This function is called once when the robot is disabled. */
   @Override
-  public void disabledInit() {
-
-  }
+  public void disabledInit() {}
 
   /** This function is called periodically when disabled. */
   @Override

@@ -7,14 +7,15 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
+/* About
+ * This class uses the DifferentialDrive class to drive the robot.
+ */
 public class RobotDrive {
-    private CANSparkMax[] motorControllers;
-
     private MotorControllerGroup leftGroup;
     private MotorControllerGroup rightGroup;
     private DifferentialDrive driveTrain;
-    private Joystick inputDevice;
 
+    private Joystick inputDevice;
     private double motorSpeed;
     private boolean canDrive;
 
@@ -30,20 +31,15 @@ public class RobotDrive {
             return;
         }
 
-        /*
-         * Store each given motor in a CANSparkMax array.
-         * Assign the left and right motor controllers and create new DifferentialDrive instance.
-         */
-        motorControllers = new CANSparkMax[leftMotors.length + rightMotors.length];
-        for(int i = 0; i < leftMotors.length; i++) {
-            motorControllers[i] = new CANSparkMax(leftMotors[i], MotorType.kBrushless);
-        }
+        CANSparkMax[] motorControllers = new CANSparkMax[] {
+            new CANSparkMax(leftMotors[0], MotorType.kBrushless),
+            new CANSparkMax(leftMotors[1], MotorType.kBrushless),
+
+            new CANSparkMax(rightMotors[0], MotorType.kBrushless),
+            new CANSparkMax(rightMotors[1], MotorType.kBrushless)
+        };
 
         leftGroup = new MotorControllerGroup(motorControllers[0], motorControllers[1]);
-        for(int i = 0; i < rightMotors.length; i++) {
-            motorControllers[leftMotors.length + i] = new CANSparkMax(rightMotors[i], MotorType.kBrushless);
-        }
-
         rightGroup = new MotorControllerGroup(motorControllers[2], motorControllers[3]);
         rightGroup.setInverted(true);
 
