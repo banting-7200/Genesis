@@ -16,9 +16,24 @@ import frc.Constants;
  */
 public class Robot extends TimedRobot {
 
-  private RobotDrive driveInstance;
-  private RobotLift liftInstance;
+  private final Joystick joystickInstance = new Joystick(0);
 
+  private final RobotDrive driveInstance = new RobotDrive(
+    Constants.LEFT_MOTORS, 
+    Constants.RIGHT_MOTORS, 
+    joystickInstance, 
+    0.5f
+  );
+
+  private final RobotLift liftInstance  = new RobotLift(
+    joystickInstance, 
+    Constants.LIFT_MOTOR, 
+    0.3,
+    Constants.LIFT_BUTTONUP, 
+    Constants.LIFT_BUTTONDOWN
+  );;
+
+  //#region robot_functions
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -38,17 +53,9 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
 
   }
+  //#endregion
 
-  /**
-   * This autonomous (along with the chooser code above) shows how to select between different
-   * autonomous modes using the dashboard. The sendable chooser code works with the Java
-   * SmartDashboard. If you prefer the LabVIEW Dashboard, remove all of the chooser code and
-   * uncomment the getString line to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional comparisons to the switch structure
-   * below with additional strings. If using the SendableChooser make sure to add them to the
-   * chooser code above as well.
-   */
+  //#region autonomous_functions
   @Override
   public void autonomousInit() {
 
@@ -59,25 +66,12 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
 
   }
+  //#endregion
 
+  //#region teleop_functions
   /** This function is called once when teleop is enabled. */
   @Override
-  public void teleopInit() {
-    driveInstance = new RobotDrive(
-      Constants.LEFT_MOTORS, 
-      Constants.RIGHT_MOTORS, 
-      new Joystick(0), 
-      0.5f
-    );
-
-    liftInstance = new RobotLift(
-      new Joystick(0), 
-      Constants.LIFT_MOTOR, 
-      0.3,
-      Constants.LIFT_BUTTONUP, 
-      Constants.LIFT_BUTTONDOWN
-    );
-  }
+  public void teleopInit() {}
 
   /** This function is called periodically during operator control. */
   @Override
@@ -85,20 +79,25 @@ public class Robot extends TimedRobot {
     driveInstance.pollDrive();
     liftInstance.pollLift();
   }
-
-  /** This function is called once when the robot is disabled. */
+  //#endregion
+  
+  //#region disabled_functions
+  /* This function is called once when the robot is disabled. */
   @Override
   public void disabledInit() {}
 
   /** This function is called periodically when disabled. */
   @Override
   public void disabledPeriodic() {}
-
-  /** This function is called once when test mode is enabled. */
+  //#endregion
+  
+  //#region test_functions
+  /* This function is called once when test mode is enabled. */
   @Override
   public void testInit() {}
 
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {}
+  //#endregion
 }
