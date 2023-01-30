@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
     Constants.LEFT_MOTORS, 
     Constants.RIGHT_MOTORS, 
     joystickInstance, 
-    0.5f
+    3.0f
   );
 
   private final RobotLift liftInstance  = new RobotLift(
